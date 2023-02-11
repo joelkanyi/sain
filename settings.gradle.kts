@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComposeSignature"
 include(":app")
+include(":composesignature")
