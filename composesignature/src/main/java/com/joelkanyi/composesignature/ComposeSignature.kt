@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.drawToBitmap
+import androidx.lifecycle.viewmodel.compose.viewModel
 import java.util.*
 
 @Composable
@@ -53,8 +54,9 @@ fun ComposeSignature(
     onComplete: (Bitmap) -> Unit,
     onClear:() -> Unit = {}
 ) {
-    // val viewModel: SignaturePadViewModel = viewModel()
-    val path = remember { mutableStateOf(mutableListOf<PathState>()) }
+    val viewModel: SignaturePadViewModel = viewModel()
+    //val path = remember { mutableStateOf(mutableListOf<PathState>()) }
+    val path = viewModel.path
     val drawColor = remember { mutableStateOf(signatureColor) }
     val drawBrush = remember { mutableStateOf(signatureThickness) }
 
@@ -70,7 +72,7 @@ fun ComposeSignature(
         )
     ) {
         Column {
-            path.value.add(PathState(Path(), drawColor.value, drawBrush.value))
+            viewModel.setPathState(PathState(Path(), drawColor.value, drawBrush.value))
 
             val signatureBitmap = captureBitmap {
                 DrawingCanvas(
@@ -95,7 +97,8 @@ fun ComposeSignature(
                     title = "Erase",
                     icon = R.drawable.ic_eraser,
                     onClick = {
-                        path.value = mutableListOf()
+                        onClear()
+                        viewModel.clearPathState()
                     }
                 )
                 ButtonComponent(
