@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -36,6 +37,19 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register("release", MavenPublication::class) {
+                from(components.getByName("release"))
+                groupId = "com.github.JoelKanyi"
+                artifactId = "composesignature"
+                version = "1.0.0"
+            }
+        }
     }
 }
 
