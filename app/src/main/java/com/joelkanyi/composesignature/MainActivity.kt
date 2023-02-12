@@ -63,6 +63,9 @@ class MainActivity : ComponentActivity() {
                             signatureThickness = 10f,
                             onComplete = { signatureBitmap ->
                                 imageBitmap = signatureBitmap.asImageBitmap()
+                            },
+                            onClear = {
+                                imageBitmap = null
                             }
                         )
 
