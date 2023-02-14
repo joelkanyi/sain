@@ -1,3 +1,5 @@
+<p align="center"><img src="demo/ComposeSignature.png" alt="MealTime" height="150px"></p>
+
 <h1 align="center">ComposeSignature</h1></br>
 
 <p align="center">
