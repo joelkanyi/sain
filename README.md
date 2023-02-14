@@ -48,6 +48,9 @@ ComposeSignature(
 )
 ```
 
+### Known Issues
+- Currently the library works well on protrait mode, when you rotate your device to landscape and then enter your signature, you might endup having an incomplete signature.
+
 ### Demo
 <img src="demo/demo.gif" width="250"/>
 </br>
