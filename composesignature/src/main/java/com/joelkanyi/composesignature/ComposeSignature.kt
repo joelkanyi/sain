@@ -51,15 +51,15 @@ fun ComposeSignature(
     signaturePadHeight: Dp = 500.dp,
     signatureColor: Color = Color.Black,
     signatureThickness: Float = 10f,
+    hasAlpha: Boolean = true,
     onComplete: (Bitmap) -> Unit,
-    onClear:() -> Unit = {}
+    onClear: () -> Unit = {},
 ) {
     val viewModel: SignaturePadViewModel = viewModel()
-    //val path = remember { mutableStateOf(mutableListOf<PathState>()) }
+    // val path = remember { mutableStateOf(mutableListOf<PathState>()) }
     val path = viewModel.path
     val drawColor = remember { mutableStateOf(signatureColor) }
     val drawBrush = remember { mutableStateOf(signatureThickness) }
-
 
     Card(
         modifier = modifier
@@ -68,8 +68,8 @@ fun ComposeSignature(
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(containerColor = signaturePadColor),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp
-        )
+            defaultElevation = 4.dp,
+        ),
     ) {
         Column {
             viewModel.setPathState(PathState(Path(), drawColor.value, drawBrush.value))
@@ -79,7 +79,7 @@ fun ComposeSignature(
                     drawColor = drawColor,
                     drawBrush = drawBrush,
                     path = path.value,
-                    modifier = modifier.height(signaturePadHeight)
+                    modifier = modifier.height(signaturePadHeight),
                 )
             }
 
@@ -87,7 +87,7 @@ fun ComposeSignature(
                 modifier = modifier
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 ButtonComponent(
                     modifier = Modifier
@@ -99,7 +99,7 @@ fun ComposeSignature(
                     onClick = {
                         onClear()
                         viewModel.clearPathState()
-                    }
+                    },
                 )
                 ButtonComponent(
                     title = "Done",
@@ -107,12 +107,17 @@ fun ComposeSignature(
                         .fillMaxWidth()
                         .height(48.dp)
                         .padding(start = 4.dp),
-                    onClick = { onComplete(signatureBitmap.invoke()) }
+                    onClick = {
+                        onComplete(
+                            signatureBitmap.invoke().apply {
+                                setHasAlpha(hasAlpha)
+                            },
+                        )
+                    },
                 )
             }
         }
     }
-
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -126,40 +131,41 @@ fun DrawingCanvas(
     val currentPath = path.last().path
     val movePath = remember { mutableStateOf<Offset?>(null) }
 
-        Canvas(
-            modifier = modifier
-                .pointerInteropFilter {
-                    when (it.action) {
-                        MotionEvent.ACTION_DOWN -> {
-                            currentPath.moveTo(it.x, it.y)
-                        }
-                        MotionEvent.ACTION_MOVE -> {
-                            movePath.value = Offset(it.x, it.y)
-                        }
-                        else -> {
-                            movePath.value = null
-                        }
+    Canvas(
+        modifier = modifier
+            .pointerInteropFilter {
+                when (it.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        currentPath.moveTo(it.x, it.y)
                     }
-                    true
-                }
-        ) {
-            movePath.value?.let {
-                currentPath.lineTo(it.x, it.y)
-                drawPath(
-                    path = currentPath,
-                    color = drawColor.value,
-                    style = Stroke(drawBrush.value)
-                )
-            }
-            path.forEach {
-                drawPath(
-                    path = it.path,
-                    color = it.color,
-                    style = Stroke(it.stroke)
-                )
-            }
-        }
 
+                    MotionEvent.ACTION_MOVE -> {
+                        movePath.value = Offset(it.x, it.y)
+                    }
+
+                    else -> {
+                        movePath.value = null
+                    }
+                }
+                true
+            },
+    ) {
+        movePath.value?.let {
+            currentPath.lineTo(it.x, it.y)
+            drawPath(
+                path = currentPath,
+                color = drawColor.value,
+                style = Stroke(drawBrush.value),
+            )
+        }
+        path.forEach {
+            drawPath(
+                path = it.path,
+                color = it.color,
+                style = Stroke(it.stroke),
+            )
+        }
+    }
 }
 
 @Composable
@@ -176,7 +182,7 @@ fun ButtonComponent(
             .clickable {
                 onClick()
             },
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Row(
             modifier = Modifier
@@ -188,25 +194,23 @@ fun ButtonComponent(
                 Icon(
                     painter = painterResource(id = icon),
                     tint = Color.White,
-                    contentDescription = null
+                    contentDescription = null,
                 )
             }
             Text(
                 text = title,
                 color = Color.White,
                 fontSize = 12.sp,
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.SemiBold,
             )
         }
     }
 }
 
-
 @Composable
 fun captureBitmap(
     content: @Composable () -> Unit,
 ): () -> Bitmap {
-
     val context = LocalContext.current
 
     /**
@@ -230,7 +234,7 @@ fun captureBitmap(
                     content.invoke()
                 }
             }
-        }
+        },
     )
 
     /** returning callback to bitmap **/
