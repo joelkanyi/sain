@@ -50,13 +50,38 @@ fun ComposeSignature(
     signaturePadColor: Color = Color(0xFFEEEEEE),
     signaturePadHeight: Dp = 500.dp,
     signatureColor: Color = Color.Black,
+    signaturePadCardElevation: Dp = 4.dp,
     signatureThickness: Float = 10f,
     hasAlpha: Boolean = true,
+    completeComponent: @Composable (onClick: () -> Unit) -> Unit = { it ->
+        ButtonComponent(
+            title = "Done",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+                .padding(start = 4.dp),
+            onClick = {
+                it()
+            },
+        )
+    },
+    clearComponent: @Composable (onClick: () -> Unit) -> Unit = {
+        ButtonComponent(
+            modifier = Modifier
+                .fillMaxWidth(.5f)
+                .height(48.dp)
+                .padding(end = 4.dp),
+            title = "Erase",
+            icon = R.drawable.ic_eraser,
+            onClick = {
+                it()
+            },
+        )
+    },
     onComplete: (Bitmap) -> Unit,
     onClear: () -> Unit = {},
 ) {
     val viewModel: SignaturePadViewModel = viewModel()
-    // val path = remember { mutableStateOf(mutableListOf<PathState>()) }
     val path = viewModel.path
     val drawColor = remember { mutableStateOf(signatureColor) }
     val drawBrush = remember { mutableStateOf(signatureThickness) }
@@ -68,7 +93,7 @@ fun ComposeSignature(
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(containerColor = signaturePadColor),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp,
+            defaultElevation = signaturePadCardElevation,
         ),
     ) {
         Column {
@@ -80,6 +105,7 @@ fun ComposeSignature(
                     drawBrush = drawBrush,
                     path = path.value,
                     modifier = modifier.height(signaturePadHeight),
+                    signaturePadColor = signaturePadColor,
                 )
             }
 
@@ -89,32 +115,17 @@ fun ComposeSignature(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                ButtonComponent(
-                    modifier = Modifier
-                        .fillMaxWidth(.5f)
-                        .height(48.dp)
-                        .padding(end = 4.dp),
-                    title = "Erase",
-                    icon = R.drawable.ic_eraser,
-                    onClick = {
-                        onClear()
-                        viewModel.clearPathState()
-                    },
-                )
-                ButtonComponent(
-                    title = "Done",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(48.dp)
-                        .padding(start = 4.dp),
-                    onClick = {
-                        onComplete(
-                            signatureBitmap.invoke().apply {
-                                setHasAlpha(hasAlpha)
-                            },
-                        )
-                    },
-                )
+                clearComponent {
+                    onClear()
+                    viewModel.clearPathState()
+                }
+                completeComponent {
+                    onComplete(
+                        signatureBitmap.invoke().apply {
+                            setHasAlpha(hasAlpha)
+                        },
+                    )
+                }
             }
         }
     }
@@ -127,7 +138,7 @@ fun DrawingCanvas(
     drawBrush: MutableState<Float>,
     path: MutableList<PathState>,
     modifier: Modifier,
-    signaturePadColor: Color = Color(0xFFEEEEEE),
+    signaturePadColor: Color,
 ) {
     val currentPath = path.last().path
     val movePath = remember { mutableStateOf<Offset?>(null) }

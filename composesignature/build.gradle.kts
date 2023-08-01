@@ -47,7 +47,7 @@ afterEvaluate {
                 from(components.getByName("release"))
                 groupId = "com.github.JoelKanyi"
                 artifactId = "composesignature"
-                version = "1.0.2"
+                version = "1.0.3"
             }
         }
     }
