@@ -127,12 +127,14 @@ fun DrawingCanvas(
     drawBrush: MutableState<Float>,
     path: MutableList<PathState>,
     modifier: Modifier,
+    signaturePadColor: Color = Color(0xFFEEEEEE),
 ) {
     val currentPath = path.last().path
     val movePath = remember { mutableStateOf<Offset?>(null) }
 
     Canvas(
         modifier = modifier
+            .background(signaturePadColor)
             .pointerInteropFilter {
                 when (it.action) {
                     MotionEvent.ACTION_DOWN -> {
