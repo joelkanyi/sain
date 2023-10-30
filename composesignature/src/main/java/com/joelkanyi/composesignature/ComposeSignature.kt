@@ -2,6 +2,7 @@ package com.joelkanyi.composesignature
 
 import android.graphics.Bitmap
 import android.view.MotionEvent
+import android.widget.Toast
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -98,7 +99,7 @@ fun ComposeSignature(
     ) {
         Column {
             viewModel.setPathState(PathState(Path(), drawColor.value, drawBrush.value))
-
+            val context = LocalContext.current
             val signatureBitmap = captureBitmap {
                 DrawingCanvas(
                     drawColor = drawColor,
@@ -119,12 +120,23 @@ fun ComposeSignature(
                     onClear()
                     viewModel.clearPathState()
                 }
+
                 completeComponent {
-                    onComplete(
-                        signatureBitmap.invoke().apply {
-                            setHasAlpha(hasAlpha)
-                        },
-                    )
+                    val isEmpty = path.value.last().path.isEmpty
+                    if (isEmpty) {
+                        Toast.makeText(
+                            context,
+                            "Signature is empty",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                        return@completeComponent
+                    } else {
+                        onComplete(
+                            signatureBitmap.invoke().apply {
+                                setHasAlpha(hasAlpha)
+                            },
+                        )
+                    }
                 }
             }
         }
