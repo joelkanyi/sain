@@ -1,5 +1,21 @@
+/*
+ * Copyright 2024 Joel Kanyi.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.joelkanyi.composesignature
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.view.MotionEvent
 import android.widget.Toast
@@ -22,8 +38,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -42,8 +61,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.drawToBitmap
-import androidx.lifecycle.viewmodel.compose.viewModel
-import java.util.*
 
 @Composable
 fun ComposeSignature(
@@ -82,10 +99,14 @@ fun ComposeSignature(
     onComplete: (Bitmap) -> Unit,
     onClear: () -> Unit = {},
 ) {
-    val viewModel: SignaturePadViewModel = viewModel()
-    val path = viewModel.path
+    @SuppressLint("MutableCollectionMutableState")
+    var path by rememberSaveable {
+        mutableStateOf(mutableListOf<PathState>())
+    }
     val drawColor = remember { mutableStateOf(signatureColor) }
     val drawBrush = remember { mutableStateOf(signatureThickness) }
+    val context = LocalContext.current
+
 
     Card(
         modifier = modifier
@@ -98,13 +119,12 @@ fun ComposeSignature(
         ),
     ) {
         Column {
-            viewModel.setPathState(PathState(Path(), drawColor.value, drawBrush.value))
-            val context = LocalContext.current
+            path.add(PathState(Path(), drawColor.value, drawBrush.value))
             val signatureBitmap = captureBitmap {
                 DrawingCanvas(
                     drawColor = drawColor,
                     drawBrush = drawBrush,
-                    path = path.value,
+                    path = path,
                     modifier = modifier.height(signaturePadHeight),
                     signaturePadColor = signaturePadColor,
                 )
@@ -118,11 +138,11 @@ fun ComposeSignature(
             ) {
                 clearComponent {
                     onClear()
-                    viewModel.clearPathState()
+                    path = mutableListOf()
                 }
 
                 completeComponent {
-                    val isEmpty = path.value.last().path.isEmpty
+                    val isEmpty = path.last().path.isEmpty
                     if (isEmpty) {
                         Toast.makeText(
                             context,
