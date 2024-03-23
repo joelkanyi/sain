@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="composesignature-wasm-js-2.0.0">
+    <output-path>$PROJECT_DIR$/composesignature/build/libs</output-path>
+    <root id="archive" name="composesignature-wasm-js-2.0.0.jar">
+      <element id="module-output" name="ComposeSignature.composesignature.wasmJsMain" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml:2:13-83
+INJECTED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml:2:13-83
+	package
+		INJECTED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml
+	xmlns:android
+		ADDED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml:2:23-81
+uses-sdk
+INJECTED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml reason: use-sdk injection requested
+INJECTED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml
+INJECTED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml
+	android:targetSdkVersion
+		INJECTED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml
+	android:minSdkVersion
+		INJECTED from /Users/joelkanyi/StudioProjects/ComposeSignature/sample/shared/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest549216673179540072.xml

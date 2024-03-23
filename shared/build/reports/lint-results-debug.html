@@ -1,0 +1,1353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Lint Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-indigo.min.css" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<script defer src="https://code.getmdl.io/1.2.0/material.min.js"></script>
+<style>
+section.section--center {
+    max-width: 860px;
+}
+.mdl-card__supporting-text + .mdl-card__actions {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+main > .mdl-layout__tab-panel {
+  padding: 8px;
+  padding-top: 48px;
+}
+
+.mdl-card__actions {
+    margin: 0;
+    padding: 4px 40px;
+    color: inherit;
+}
+.mdl-card > * {
+    height: auto;
+}
+.mdl-card__actions a {
+    color: #00BCD4;
+    margin: 0;
+}
+.error-icon {
+    color: #bb7777;
+    vertical-align: bottom;
+}
+.warning-icon {
+    vertical-align: bottom;
+}
+.mdl-layout__content section:not(:last-of-type) {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.mdl-card .mdl-card__supporting-text {
+  margin: 40px;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0;
+  color: inherit;
+  width: calc(100% - 80px);
+}
+div.mdl-layout__drawer-button .material-icons {
+    line-height: 48px;
+}
+.mdl-card .mdl-card__supporting-text {
+    margin-top: 0px;
+}
+.chips {
+    float: right;
+    vertical-align: middle;
+}
+
+pre.errorlines {
+    background-color: white;
+    font-family: monospace;
+    border: 1px solid #e0e0e0;
+    line-height: 0.9rem;
+    font-size: 0.9rem;    padding: 1px 0px 1px; 1px;
+    overflow: scroll;
+}
+.prefix {
+    color: #660e7a;
+    font-weight: bold;
+}
+.attribute {
+    color: #0000ff;
+    font-weight: bold;
+}
+.value {
+    color: #008000;
+    font-weight: bold;
+}
+.tag {
+    color: #000080;
+    font-weight: bold;
+}
+.comment {
+    color: #808080;
+    font-style: italic;
+}
+.javadoc {
+    color: #808080;
+    font-style: italic;
+}
+.annotation {
+    color: #808000;
+}
+.string {
+    color: #008000;
+    font-weight: bold;
+}
+.number {
+    color: #0000ff;
+}
+.keyword {
+    color: #000080;
+    font-weight: bold;
+}
+.caretline {
+    background-color: #fffae3;
+}
+.lineno {
+    color: #999999;
+    background-color: #f0f0f0;
+}
+.error {
+    display: inline-block;
+    position:relative;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AwCFR4T/3uLMgAAADxJREFUCNdNyLERQEAABMCjL4lQwIzcjErpguAL+C9AvgKJDbeD/PRpLdm35Hm+MU+cB+tCKaJW4L4YBy+CAiLJrFs9mgAAAABJRU5ErkJggg==) bottom repeat-x;
+}
+.warning {
+    text-decoration: none;
+    background-color: #f6ebbc;
+}
+.overview {
+    padding: 10pt;
+    width: 100%;
+    overflow: auto;
+    border-collapse:collapse;
+}
+.overview tr {
+    border-bottom: solid 1px #eeeeee;
+}
+.categoryColumn a {
+     text-decoration: none;
+     color: inherit;
+}
+.countColumn {
+    text-align: right;
+    padding-right: 20px;
+    width: 50px;
+}
+.issueColumn {
+   padding-left: 16px;
+}
+.categoryColumn {
+   position: relative;
+   left: -50px;
+   padding-top: 20px;
+   padding-bottom: 5px;
+}
+.options {
+   padding-left: 16px;
+}
+</style>
+<script language="javascript" type="text/javascript">
+<!--
+function reveal(id) {
+if (document.getElementById) {
+document.getElementById(id).style.display = 'block';
+document.getElementById(id+'Link').style.display = 'none';
+}
+}
+function hideid(id) {
+if (document.getElementById) {
+document.getElementById(id).style.display = 'none';
+}
+}
+//-->
+</script>
+</head>
+<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Lint Report: 1 warning</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Sun Mar 17 17:49:42 EAT 2024 by AGP (8.2.0)</nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Issue Types</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
+      <a class="mdl-navigation__link" href="#ObsoleteLintCustomCheck"><i class="material-icons warning-icon">warning</i>Obsolete custom lint check (1)</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="mdl-layout__tab-panel is-active">
+<a name="overview"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="OverviewCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Overview</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<table class="overview">
+<tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Lint">Lint</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#ObsoleteLintCustomCheck">ObsoleteLintCustomCheck</a>: Obsolete custom lint check</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#ExtraIssues">Included Additional Checks (32)</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (39)</a>
+</td></tr>
+</table>
+<br/>              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="OverviewCardLink" onclick="hideid('OverviewCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
+<a name="Lint"></a>
+<a name="ObsoleteLintCustomCheck"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="ObsoleteLintCustomCheckCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Obsolete custom lint check</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../../../../../.gradle/caches/transforms-4/00d24642d8a0d9b897cd9ac06a8c7eff/transformed/runtime-release/jars/lint.jar">../../../../../../.gradle/caches/transforms-4/00d24642d8a0d9b897cd9ac06a8c7eff/transformed/runtime-release/jars/lint.jar</a></span>: <span class="message">Library lint checks reference invalid APIs; these checks <b>will be skipped</b>!<br/>
+<br/>
+Lint found an issue registry (<code>androidx.compose.runtime.lint.RuntimeIssueRegistry</code>)<br/>
+which contains some references to invalid API:<br/>
+org.jetbrains.kotlin.analysis.api.session.KtAnalysisSessionProvider: org.jetbrains.kotlin.analysis.api.lifetime.KtLifetimeTokenFactory getTokenFactory()<br/>
+(Referenced from androidx/compose/runtime/lint/AutoboxingStateCreationDetector.class)<br/>
+<br/>
+Therefore, this lint check library is <b>not</b> included<br/>
+in analysis. This affects the following lint checks:<br/>
+<code>AutoboxingStateValueProperty</code><br/>
+<code>AutoboxingStateCreation</code><br/>
+<code>CoroutineCreationDuringComposition</code><br/>
+<code>FlowOperatorInvokedInComposition</code><br/>
+<code>ComposableLambdaParameterNaming</code><br/>
+<code>ComposableLambdaParameterPosition</code><br/>
+<code>ComposableNaming</code><br/>
+<code>StateFlowValueCalledInComposition</code><br/>
+<code>CompositionLocalNaming</code><br/>
+<code>MutableCollectionMutableState</code><br/>
+<code>ProduceStateDoesNotAssignValue</code><br/>
+<code>RememberReturnType</code><br/>
+<code>OpaqueUnitKey</code><br/>
+<code>UnrememberedMutableState</code><br/>
+<br/>
+To use this lint check, upgrade to a more recent version<br/>
+of the library.</span><br />
+</div>
+<div class="metadata"><div class="explanation" id="explanationObsoleteLintCustomCheck" style="display: none;">
+Lint can be extended with "custom checks": additional checks implemented by developers and libraries to for example enforce specific API usages required by a library or a company coding style guideline.<br/>
+<br/>
+The Lint APIs are not yet stable, so these checks may either cause a performance degradation, or stop working, or provide wrong results.<br/>
+<br/>
+This warning flags custom lint checks that are found to be using obsolete APIs and will need to be updated to run in the current lint environment.<br/>
+<br/>
+It may also flag issues found to be using a <b>newer</b> version of the API, meaning that you need to use a newer version of lint (or Android Studio or Gradle plugin etc) to work with these checks.<br/>To suppress this error, use the issue id "ObsoleteLintCustomCheck" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">ObsoleteLintCustomCheck</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 10/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationObsoleteLintCustomCheckLink" onclick="reveal('explanationObsoleteLintCustomCheck');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="ObsoleteLintCustomCheckCardLink" onclick="hideid('ObsoleteLintCustomCheckCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
+<a name="ExtraIssues"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="ExtraIssuesCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Included Additional Checks</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+This card lists all the extra checks run by lint, provided from libraries,
+build configuration and extra flags. This is included to help you verify
+whether a particular check is included in analysis when configuring builds.
+(Note that the list does not include the hundreds of built-in checks into lint,
+only additional ones.)
+<div id="IncludedIssues" style="display: none;"><br/><br/><div class="issue">
+<div class="id">EnsureInitializerMetadata<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+When a library defines a Initializer, it needs to be accompanied by a corresponding &lt;meta-data> entry in the AndroidManifest.xml file.<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.startup<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=823348">https://issuetracker.google.com/issues/new?component=823348</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">EnsureInitializerNoArgConstr<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Every <code>Initializer</code> must have a no argument constructor.<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.startup<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=823348">https://issuetracker.google.com/issues/new?component=823348</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ExperimentalAnnotationRetention<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Experimental annotations defined in Java source should use default (<code>CLASS</code>) retention, while Kotlin-sourced annotations should use <code>BINARY</code> retention.<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.annotation.experimental<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=459778">https://issuetracker.google.com/issues/new?component=459778</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">FrequentlyChangedStateReadInComposition<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+This property is observable and is updated after every scroll or remeasure. If you use it in the composable function directly, it will be recomposed on every change, causing potential performance issues including infinity recomposition loops. Prefer wrapping it with derivedStateOf to use calculation based on this property in composition or collect changes inside LaunchedEffect instead.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.foundation<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">InvalidColorHexValue<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Creating a Color with a hex value requires a 32 bit value (such as 0xFF000000), with 8 bits being used per channel (ARGB). Not passing a full 32 bit value will result in channels being undefined / incorrect.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui.graphics<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">InvalidFragmentVersionForActivityResult<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+In order to use the ActivityResult APIs you must upgrade your                 Fragment version to 1.3.0. Previous versions of FragmentActivity                 failed to call super.onRequestPermissionsResult() and used invalid request codes<br/><div class="moreinfo">More info: <a href="https://developer.android.com/training/permissions/requesting#make-the-request">https://developer.android.com/training/permissions/requesting#make-the-request</a>
+</div><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.activity<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=527362">https://issuetracker.google.com/issues/new?component=527362</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">LaunchDuringComposition<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Calling <code>launch</code> during composition is incorrect. Doing so will cause launch to be called multiple times resulting in a RuntimeException. Instead, use <code>SideEffect</code> and <code>launch</code> inside of the suspending block. The block will only run after a successful composition.<br/><div class="vendor">
+Vendor: Jetpack Activity Compose<br/>
+Identifier: androidx.activity.compose<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">MissingColorAlphaChannel<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Creating a Color with a hex value requires a 32 bit value (such as 0xFF000000), with 8 bits being used per channel (ARGB). Not passing a full 32 bit value will result in channels being undefined. For example, passing 0xFF0000 will result in a missing alpha channel, so the color will not appear visible.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui.graphics<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ModifierFactoryExtensionFunction<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Modifier factory functions should be defined as extension functions on Modifier to allow modifiers to be fluently chained.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ModifierFactoryReturnType<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Modifier factory functions should return Modifier as their type, and not a subtype of Modifier (such as Modifier.Element).<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ModifierFactoryUnreferencedReceiver<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Modifier factory functions are fluently chained to construct a chain of Modifier objects that will be applied to a layout. As a result, each factory function <i>must</i> use the receiver <code>Modifier</code> parameter, to ensure that the function is returning a chain that includes previous items in the chain. Make sure the returned chain either explicitly includes <code>this</code>, such as <code>return this.then(MyModifier)</code> or implicitly by returning a chain that starts with an implicit call to another factory function, such as <code>return myModifier()</code>, where <code>myModifier</code> is defined as <code>fun Modifier.myModifier(): Modifier</code>.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ModifierNodeInspectableProperties<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+ModifierNodeElements may override inspectableProperties() to provide information about the modifier in the layout inspector. The default implementation attempts to read all of the properties on the class reflectively, which may not comprehensively or effectively describe the modifier.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ModifierParameter<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+The first (or only) Modifier parameter in a Composable function should follow the following rules:<br/>
+- Be named <code>modifier</code><br/>
+- Have a type of <code>Modifier</code><br/>
+- Either have no default value, or have a default value of <code>Modifier</code><br/>
+- If optional, be the first optional parameter in the parameter list<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">MultipleAwaitPointerEventScopes<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Pointer Input events are queued inside awaitPointerEventScope. Multiple calls to awaitPointerEventScope may exit the scope. During this time there is no guarantee that the events will be queued and some events may be dropped. It is recommended to use a single top-level block and perform the pointer events processing within such block.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">RememberSaveableSaverParameter<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+The first parameter to <code>rememberSaveable</code> is a vararg parameter for inputs that when changed will cause the state to reset. Passing a <code>Saver</code> object to this parameter is an error, as the intention is to pass the <code>Saver</code> object to the saver parameter. Since the saver parameter is not the first parameter, it must be explicitly named.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.runtime.saveable<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">RepeatOnLifecycleWrongUsage<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+The repeatOnLifecycle APIs should be used when the View is created,                 that is in the <code>onCreate</code> lifecycle method for Activities, or <code>onViewCreated</code> in                 case you're using Fragments.<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.lifecycle<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=413132">https://issuetracker.google.com/issues/new?component=413132</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ReturnFromAwaitPointerEventScope<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Pointer Input events are queued inside awaitPointerEventScope. By using the return value of awaitPointerEventScope one might unexpectedly lose events. If another awaitPointerEventScope is restarted there is no guarantee that the events will persist between those calls. In this case you should keep all events inside the awaitPointerEventScope block<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">SuspiciousCompositionLocalModifierRead<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Jetpack Compose is unable to send updated values of a CompositionLocal when it's read in a Modifier.Node's initializer and onAttach() or onDetach() callbacks. Modifier.Node's callbacks are not aware of snapshot reads, and their lifecycle callbacks are not invoked on every recomposition. If you read a CompositionLocal in onAttach() or onDetach(), you will only get the CompositionLocal's value once at the moment of the read, which may lead to unexpected behaviors. We recommend instead reading CompositionLocals at time-of-use in callbacks that apply your Modifier's behavior, like measure() for LayoutModifierNode, draw() for DrawModifierNode, and so on. To observe the value of the CompositionLocal manually, extend from the ObserverNode interface and place the read inside an observeReads {} block within the onObservedReadsChanged() callback.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnnecessaryComposedModifier<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+<code>Modifier.composed</code> allows invoking @Composable functions when creating a <code>Modifier</code> instance - for example, using <code>remember</code> to have instance-specific state, allowing the same <code>Modifier</code> object to be safely used in multiple places. Using <code>Modifier.composed</code> without calling any @Composable functions inside is unnecessary, and since the Modifier is no longer skippable, this can cause a lot of extra work inside the composed body, leading to worse performance.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.ui<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnrememberedAnimatable<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Animatable instances created during composition need to be `remember`ed, otherwise they will be recreated during recomposition, and lose their state. Either hoist the Animatable to an object that is not created during composition, or wrap the Animatable in a call to <code>remember</code>.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.animation.core<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnrememberedMutableInteractionSource<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+MutableInteractionSource instances created during composition need to be `remember`ed, otherwise they will be recreated during recomposition, and lose their state. Either hoist the MutableInteractionSource to an object that is not created during composition, or wrap the MutableInteractionSource in a call to <code>remember</code>.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.foundation<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnsafeLifecycleWhenUsage<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+If the <code>Lifecycle</code> is destroyed within the block of                     <code>Lifecycle.whenStarted</code> or any similar <code>Lifecycle.when</code> method is suspended,                     the block will be cancelled, which will also cancel any child coroutine                     launched inside the block. As as a result, If you have a try finally block                     in your code, the finally might run after the Lifecycle moves outside                     the desired state. It is recommended to check the <code>Lifecycle.isAtLeast</code>                     before accessing UI in finally block. Similarly,                     if you have a catch statement that might catch <code>CancellationException</code>,                     you should check the <code>Lifecycle.isAtLeast</code> before accessing the UI. See                     documentation of <code>Lifecycle.whenStateAtLeast</code> for more details<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.lifecycle<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=413132">https://issuetracker.google.com/issues/new?component=413132</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnsafeOptInUsageError<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+This API has been flagged as opt-in with error-level severity.<br/>
+<br/>
+Any declaration annotated with this marker is considered part of an unstable or<br/>
+otherwise non-standard API surface and its call sites should accept the opt-in<br/>
+aspect of it by using the <code>@OptIn</code> annotation, using the marker annotation --<br/>
+effectively causing further propagation of the opt-in aspect -- or configuring<br/>
+the <code>UnsafeOptInUsageError</code> check's options for project-wide opt-in.<br/>
+<br/>
+To configure project-wide opt-in, specify the <code>opt-in</code> option value in <code>lint.xml</code><br/>
+as a comma-delimited list of opted-in annotations:<br/>
+
+<pre>
+&lt;lint>
+    &lt;issue id="UnsafeOptInUsageError">
+        &lt;option name="opt-in" value="com.foo.ExperimentalBarAnnotation" />
+    &lt;/issue>
+&lt;/lint>
+</pre>
+<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.annotation.experimental<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=459778">https://issuetracker.google.com/issues/new?component=459778</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnsafeOptInUsageWarning<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+This API has been flagged as opt-in with warning-level severity.<br/>
+<br/>
+Any declaration annotated with this marker is considered part of an unstable or<br/>
+otherwise non-standard API surface and its call sites should accept the opt-in<br/>
+aspect of it by using the <code>@OptIn</code> annotation, using the marker annotation --<br/>
+effectively causing further propagation of the opt-in aspect -- or configuring<br/>
+the <code>UnsafeOptInUsageWarning</code> check's options for project-wide opt-in.<br/>
+<br/>
+To configure project-wide opt-in, specify the <code>opt-in</code> option value in <code>lint.xml</code><br/>
+as a comma-delimited list of opted-in annotations:<br/>
+
+<pre>
+&lt;lint>
+    &lt;issue id="UnsafeOptInUsageWarning">
+        &lt;option name="opt-in" value="com.foo.ExperimentalBarAnnotation" />
+    &lt;/issue>
+&lt;/lint>
+</pre>
+<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.annotation.experimental<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=459778">https://issuetracker.google.com/issues/new?component=459778</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnusedBoxWithConstraintsScope<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+The <code>content</code> lambda in BoxWithConstraints has a scope which will include the incoming constraints. If this scope is ignored, then the cost of subcomposition is being wasted and this BoxWithConstraints should be replaced with a Box.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.foundation<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnusedContentLambdaTargetStateParameter<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+<code>content</code> lambda in AnimatedContent works as a lookup function that returns the corresponding content based on the parameter (a state of type <code>T</code>). It is important for this lambda to return content <i>specific</i> to the input parameter, so that the different contents can be properly animated. Not using the input parameter to the content lambda will result in the same content for different input (i.e. target state) and therefore an erroneous transition between the exact same content.`<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.animation<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnusedCrossfadeTargetStateParameter<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+<code>content</code> lambda in Crossfade works as a lookup function that returns the corresponding content based on the parameter (a state of type <code>T</code>). It is important for this lambda to return content <i>specific</i> to the input parameter, so that the different contents can be properly crossfaded. Not using the input parameter to the content lambda will result in the same content for different input (i.e. target state) and therefore an erroneous crossfade between the exact same content.`<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.animation<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnusedMaterial3ScaffoldPaddingParameter<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+The <code>content</code> lambda in Scaffold has a padding parameter which will include any inner padding for the content due to app bars. If this parameter is ignored, then content may be obscured by the app bars resulting in visual issues or elements that can't be interacted with.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.material3<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnusedTransitionTargetStateParameter<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Transition.animate* functions provide a target state parameter in the lambda that will be used to calculate the value for a given state. This target state parameter in the lambda may or may not be the same as the actual state, as the animation system occasionally needs to look up target values for other states to do proper seeking/tooling preview. Relying on other state than the provided <code>targetState</code> could also result in unnecessary recompositions. Therefore, it is generally considered an error if this <code>targetState</code> parameter is not used.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.animation.core<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseOfNonLambdaOffsetOverload<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+<code>Modifier.offset()</code> is recommended to be used with static arguments only to avoid unnecessary recompositions. <code>Modifier.offset{ }</code> is preferred in the cases where the arguments are backed by a <code>State</code>.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.foundation<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UsingMaterialAndMaterial3Libraries<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+material and material3 are separate design system libraries that are incompatible with each other, as they have their own distinct theming systems. Using components from both libraries concurrently can cause issues: for example material components will not pick up the correct content color from a material3 container, and vice versa.<br/><div class="vendor">
+Vendor: Jetpack Compose<br/>
+Identifier: androidx.compose.material3<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">WrongRequiresOptIn<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Experimental features defined in Kotlin source code must be annotated with the Kotlin<br/>
+<code>@RequiresOptIn</code> annotation. Using <code>androidx.annotation.RequiresOptIn</code> will prevent the<br/>
+Kotlin compiler from enforcing its opt-in policies.<br/><div class="vendor">
+Vendor: Android Open Source Project<br/>
+Identifier: androidx.annotation.experimental<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=459778">https://issuetracker.google.com/issues/new?component=459778</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="IncludedIssuesLink" onclick="reveal('IncludedIssues');">
+List Issues</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="ExtraIssuesCardLink" onclick="hideid('ExtraIssuesCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
+<a name="MissingIssues"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="MissingIssuesCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Disabled Checks</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+One or more issues were not run by lint, either
+because the check is not enabled by default, or because
+it was disabled with a command line flag or via one or
+more <code>lint.xml</code> configuration files in the project directories.
+<div id="SuppressedIssues" style="display: none;"><br/><br/><div class="issue">
+<div class="id">AppCompatMethod<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+When using the appcompat library, there are some methods you should be calling instead of the normal ones; for example, <code>getSupportActionBar()</code> instead of <code>getActionBar()</code>. This lint check looks for calls to the wrong method.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/topic/libraries/support-library/">https://developer.android.com/topic/libraries/support-library/</a>
+</div>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">AppLinksAutoVerify<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Ensures that app links are correctly set and associated with website.<br/><div class="moreinfo">More info: <a href="https://g.co/appindexing/applinks">https://g.co/appindexing/applinks</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">BackButton<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+According to the Android Design Guide,<br/>
+<br/>
+"Other platforms use an explicit back button with label to allow the user to navigate up the application's hierarchy. Instead, Android uses the main action bar's app icon for hierarchical navigation and the navigation bar's back button for temporal navigation."<br/>
+<br/>
+This check is not very sophisticated (it just looks for buttons with the label "Back"), so it is disabled by default to not trigger on common scenarios like pairs of Back/Next buttons to paginate through screens.<br/><div class="moreinfo">More info: <a href="https://d.android.com/r/studio-ui/designer/material/design">https://d.android.com/r/studio-ui/designer/material/design</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ConvertToWebp<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+The WebP format is typically more compact than PNG and JPEG. As of Android 4.2.1 it supports transparency and lossless conversion as well. Note that there is a quickfix in the IDE which lets you perform conversion.<br/>
+<br/>
+Previously, launcher icons were required to be in the PNG format but that restriction is no longer there, so lint now flags these.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">DalvikOverride<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+The Dalvik virtual machine will treat a package private method in one class as overriding a package private method in its super class, even if they are in separate packages.<br/>
+<br/>
+If you really did intend for this method to override the other, make the method <code>protected</code> instead.<br/>
+<br/>
+If you did <b>not</b> intend the override, consider making the method private, or changing its name or signature.<br/>
+<br/>
+Note that this check is disabled be default, because ART (the successor to Dalvik) no longer has this behavior.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">DefaultEncoding<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Some APIs will implicitly use the default system character encoding instead of UTF-8 when converting to or from bytes, such as when creating a default <code>FileReader</code>.<br/>
+<br/>
+This is <i>usually</i> not correct; you only want to do this if you need to read files created by other programs where they have deliberately written in the same encoding. The default encoding varies from platform to platform and can vary from locale to locale, so this makes it difficult to interpret files containing non-ASCII characters.<br/>
+<br/>
+We recommend using UTF-8 everywhere.<br/>
+<br/>
+Note that on Android, the default file encoding is always UTF-8 (see <a href="https://developer.android.com/reference/java/nio/charset/Charset#defaultCharset(">https://developer.android.com/reference/java/nio/charset/Charset#defaultCharset(</a>) for more), so this lint check deliberately does not flag any problems in Android code, since it is always safe to rely on the default character encoding there.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">DuplicateStrings<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Duplicate strings can make applications larger unnecessarily.<br/>
+<br/>
+This lint check looks for duplicate strings, including differences for strings where the only difference is in capitalization. Title casing and all uppercase can all be adjusted in the layout or in code.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/reference/android/widget/TextView.html#attr_android:inputType">https://developer.android.com/reference/android/widget/TextView.html#attr_android:inputType</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">EasterEgg<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+An "easter egg" is code deliberately hidden in the code, both from potential users and even from other developers. This lint check looks for code which looks like it may be hidden from sight.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ExpensiveAssertion<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+In Kotlin, assertions are not handled the same way as from the Java programming language. In particular, they're just implemented as a library call, and inside the library call the error is only thrown if assertions are enabled.<br/>
+<br/>
+This means that the arguments to the <code>assert</code> call will <b>always</b> be evaluated. If you're doing any computation in the expression being asserted, that computation will unconditionally be performed whether or not assertions are turned on. This typically turns into wasted work in release builds.<br/>
+<br/>
+This check looks for cases where the assertion condition is nontrivial, e.g. it is performing method calls or doing more work than simple comparisons on local variables or fields.<br/>
+<br/>
+You can work around this by writing your own inline assert method instead:<br/>
+
+<pre>
+@Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
+inline fun assert(condition: () -> Boolean) {
+    if (_Assertions.ENABLED &amp;&amp; !condition()) {
+        throw AssertionError()
+    }
+}
+</pre>
+<br/>
+In Android, because assertions are not enforced at runtime, instead use this:<br/>
+
+<pre>
+inline fun assert(condition: () -> Boolean) {
+    if (BuildConfig.DEBUG &amp;&amp; !condition()) {
+        throw AssertionError()
+    }
+}
+</pre>
+<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">IconExpectedSize<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+There are predefined sizes (for each density) for launcher icons. You should follow these conventions to make sure your icons fit in with the overall look of the platform.<br/><div class="moreinfo">More info: <a href="https://d.android.com/r/studio-ui/designer/material/iconography">https://d.android.com/r/studio-ui/designer/material/iconography</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ImplicitSamInstance<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Kotlin's support for SAM (single accessor method) interfaces lets you pass a lambda to the interface. This will create a new instance on the fly even though there is no explicit constructor call. If you pass one of these lambdas or method references into a method which (for example) stores or compares the object identity, unexpected results may happen.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">InvalidPackage<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+This check scans through libraries looking for calls to APIs that are not included in Android.<br/>
+<br/>
+When you create Android projects, the classpath is set up such that you can only access classes in the API packages that are included in Android. However, if you add other projects to your libs/ folder, there is no guarantee that those .jar files were built with an Android specific classpath, and in particular, they could be accessing unsupported APIs such as java.applet.<br/>
+<br/>
+This check scans through library jars and looks for references to API packages that are not included in Android and flags these. This is only an error if your code calls one of the library classes which wind up referencing the unsupported package.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">KotlinPropertyAccess<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+For a method to be represented as a property in Kotlin, strict &#8220;bean&#8221;-style prefixing must be used.<br/>
+<br/>
+Accessor methods require a <code>get</code> prefix or for boolean-returning methods an <code>is</code> prefix can be used.<br/><div class="moreinfo">More info: <a href="https://android.github.io/kotlin-guides/interop.html#property-prefixes">https://android.github.io/kotlin-guides/interop.html#property-prefixes</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">KotlincFE10<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+K2, the new version of Kotlin compiler, which encompasses the new frontend, is coming. Try to avoid using internal APIs from the old frontend if possible.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">LambdaLast<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+To improve calling this code from Kotlin, parameter types eligible for SAM conversion should be last.<br/><div class="moreinfo">More info: <a href="https://android.github.io/kotlin-guides/interop.html#lambda-parameters-last">https://android.github.io/kotlin-guides/interop.html#lambda-parameters-last</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">LintDocExample<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Lint's tool for generating documentation for each issue has special support for including a code example which shows how to trigger the report. It will pick the first unit test it can find and pick out the source file referenced from the error message, but you can instead designate a unit test to be the documentation example, and in that case, all the files are included.<br/>
+<br/>
+To designate a unit test as the documentation example for an issue, name the test <code>testDocumentationExample</code>, or if your detector reports multiple issues, <code>testDocumentationExample</code>&lt;Id>, such as <code>testDocumentationExampleMyId</code>.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">LintImplPsiEquals<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+You should never compare two PSI elements for equality with <code>equals</code>; use <code>isEquivalentTo(PsiElement)</code> instead.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">LintImplUnexpectedDomain<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+This checks flags URLs to domains that have not been explicitly allowed for use as a documentation source.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">LogConditional<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+The <code>BuildConfig</code> class provides a constant, <code>DEBUG</code>, which indicates whether the code is being built in release mode or in debug mode. In release mode, you typically want to strip out all the logging calls. Since the compiler will automatically remove all code which is inside a <code>if (false)</code> check, surrounding your logging calls with a check for <code>BuildConfig.DEBUG</code> is a good idea.<br/>
+<br/>
+If you <b>really</b> intend for the logging to be present in release mode, you can suppress this warning with a <code>@SuppressLint</code> annotation for the intentional logging calls.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">MangledCRLF<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+On Windows, line endings are typically recorded as carriage return plus newline: \r\n.<br/>
+<br/>
+This detector looks for invalid line endings with repeated carriage return characters (without newlines). Previous versions of the ADT plugin could accidentally introduce these into the file, and when editing the file, the editor could produce confusing visual artifacts.<br/><div class="moreinfo">More info: <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=375421">https://bugs.eclipse.org/bugs/show_bug.cgi?id=375421</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">MinSdkTooLow<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+The value of the <code>minSdkVersion</code> property is too low and can be incremented without noticeably reducing the number of supported devices.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">NegativeMargin<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Margin values should be positive. Negative values are generally a sign that you are making assumptions about views surrounding the current one, or may be tempted to turn off child clipping to allow a view to escape its parent. Turning off child clipping to do this not only leads to poor graphical performance, it also results in wrong touch event handling since touch events are based strictly on a chain of parent-rect hit tests. Finally, making assumptions about the size of strings can lead to localization problems.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">NewerVersionAvailable<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the <code>GradleDependency</code> check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also <b>much</b> slower.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">NoHardKeywords<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Do not use Kotlin&#8217;s hard keywords as the name of methods or fields. These require the use of backticks to escape when calling from Kotlin. Soft keywords, modifier keywords, and special identifiers are allowed.<br/>
+<br/>
+For example, ActionEvent's <code>getWhen()</code> method requires backticks when used from Kotlin:
+<pre>
+val timestamp = event.`when`
+</pre>
+<br/><div class="moreinfo">More info: <a href="https://android.github.io/kotlin-guides/interop.html#no-hard-keywords">https://android.github.io/kotlin-guides/interop.html#no-hard-keywords</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">NoOp<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+This check looks for code which looks like it's a no-op -- usually leftover expressions from interactive debugging, but in some cases bugs where you had intended to do something with the expression such as assign it to a field.<br/><br/>
+This check can be configured via the following options:<br/><br/>
+<div class="options">
+<b>pure-getters</b> (default is false):<br/>
+Whether to assume methods with getter-names have no side effects.<br/>
+<br/>
+Getter methods (where names start with <code>get</code> or <code>is</code>, and have non-void return types, and no arguments) should not have side effects. With this option turned on, lint will assume that is the case and will list any getter calls whose results are ignored as suspicious code.<br/>
+<br/>
+To configure this option, use a `lint.xml` file in the project or source folder using an <code>&lt;option&gt;</code> block like the following:
+<pre class="errorlines">
+<span class="lineno"> 1 </span><span class="tag">&lt;lint></span>
+<span class="lineno"> 2 </span>    <span class="tag">&lt;issue</span><span class="attribute"> id</span>=<span class="value">"NoOp"</span>>
+<span class="caretline"><span class="lineno"> 3 </span>        <span class="tag">&lt;option</span><span class="attribute"> name</span>=<span class="warning"><span class="value">"pure-getters"</span> <span class="attribute">value</span>=<span class="value">"false"</span></span> />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 4 </span>    <span class="tag">&lt;/issue></span>
+<span class="lineno"> 5 </span><span class="tag">&lt;/lint></span>
+</pre>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">PermissionNamingConvention<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Permissions should be prefixed with an app's package name, using reverse-domain-style naming. This prefix should be followed by <code>.permission.</code>, and then a description of the capability that the permission represents, in upper SNAKE_CASE. For example, <code>com.example.myapp.permission.ENGAGE_HYPERSPACE</code>.<br/>
+<br/>
+Following this recommendation avoids naming collisions, and helps clearly identify the owner and intention of a custom permission.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">Registered<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Activities, services and content providers should be registered in the <code>AndroidManifest.xml</code> file using <code>&lt;activity></code>, <code>&lt;service></code> and <code>&lt;provider></code> tags.<br/>
+<br/>
+If your activity is simply a parent class intended to be subclassed by other "real" activities, make it an abstract class.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/guide/topics/manifest/manifest-intro.html">https://developer.android.com/guide/topics/manifest/manifest-intro.html</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">RequiredSize<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+All views must specify an explicit <code>layout_width</code> and <code>layout_height</code> attribute. There is a runtime check for this, so if you fail to specify a size, an exception is thrown at runtime.<br/>
+<br/>
+It's possible to specify these widths via styles as well. GridLayout, as a special case, does not require you to specify a size.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">SelectableText<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+If a <code>&lt;TextView></code> is used to display data, the user might want to copy that data and paste it elsewhere. To allow this, the <code>&lt;TextView></code> should specify <code>android:textIsSelectable="true"</code>.<br/>
+<br/>
+This lint check looks for TextViews which are likely to be displaying data: views whose text is set dynamically.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">StopShip<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Using the comment <code>// STOPSHIP</code> can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.<br/>
+<br/>
+In Kotlin, the <code>TODO()</code> method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">StringFormatTrivial<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Every call to <code>String.format</code> creates a new <code>Formatter</code> instance, which will decrease the performance of your app. <code>String.format</code> should only be used when necessary--if the formatted string contains only trivial conversions (e.g. <code>b</code>, <code>s</code>, <code>c</code>) and there are no translation concerns, it will be more efficient to replace them and concatenate with <code>+</code>.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">SyntheticAccessor<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+A private inner class which is accessed from the outer class will force the compiler to insert a synthetic accessor; this means that you are causing extra overhead. This is not important in small projects, but is important for large apps running up against the 64K method handle limit, and especially for <b>libraries</b> where you want to make sure your library is as small as possible for the cases where your library is used in an app running up against the 64K limit.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">TypographyQuotes<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Straight single quotes and double quotes, when used as a pair, can be replaced by "curvy quotes" (or directional quotes). This can make the text more readable. Note that you should never use grave accents and apostrophes to quote, `like this'. (Also note that you should not use curvy quotes for code fragments.)<br/><div class="moreinfo">More info: <a href="https://en.wikipedia.org/wiki/Quotation_mark">https://en.wikipedia.org/wiki/Quotation_mark</a>
+</div>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnknownNullness<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+To improve referencing this code from Kotlin, consider adding explicit nullness information here with either <code>@NonNull</code> or <code>@Nullable</code>.<br/><br/>
+This check can be configured via the following options:<br/><br/>
+<div class="options">
+<b>ignore-deprecated</b> (default is false):<br/>
+Whether to ignore classes and members that have been annotated with <code>@Deprecated</code>.<br/>
+<br/>
+Normally this lint check will flag all unannotated elements, but by setting this option to <code>true</code> it will skip any deprecated elements.<br/>
+<br/>
+To configure this option, use a `lint.xml` file in the project or source folder using an <code>&lt;option&gt;</code> block like the following:
+<pre class="errorlines">
+<span class="lineno"> 1 </span><span class="tag">&lt;lint></span>
+<span class="lineno"> 2 </span>    <span class="tag">&lt;issue</span><span class="attribute"> id</span>=<span class="value">"UnknownNullness"</span>>
+<span class="caretline"><span class="lineno"> 3 </span>        <span class="tag">&lt;option</span><span class="attribute"> name</span>=<span class="warning"><span class="value">"ignore-deprecated"</span> <span class="attribute">value</span>=<span class="value">"false"</span></span> />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 4 </span>    <span class="tag">&lt;/issue></span>
+<span class="lineno"> 5 </span><span class="tag">&lt;/lint></span>
+</pre>
+</div><div class="moreinfo">More info: <a href="https://developer.android.com/kotlin/interop#nullability_annotations">https://developer.android.com/kotlin/interop#nullability_annotations</a>
+</div>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnsupportedChromeOsHardware<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+The <code>&lt;uses-feature></code> element should not require this unsupported large screen hardware feature. Any &lt;uses-feature> not explicitly marked with <code>required="false"</code> is necessary on the device to be installed on. Ensure that any features that might prevent it from being installed on a ChromeOS, large screen, or foldable device are reviewed and marked as not required in the manifest.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/topic/arc/manifest.html#incompat-entries">https://developer.android.com/topic/arc/manifest.html#incompat-entries</a>
+</div>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UnusedIds<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+This resource id definition appears not to be needed since it is not referenced from anywhere. Having id definitions, even if unused, is not necessarily a bad idea since they make working on layouts and menus easier, so there is not a strong reason to delete these.<br/>
+<br/>
+<br/>
+The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.<br/>
+<br/>
+You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests =true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests =true.<br/>
+<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ValidActionsXml<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Ensures that an actions XML file is properly formed<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">VulnerableCordovaVersion<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+The version of Cordova used in the app is vulnerable to security issues. Please update to the latest Apache Cordova version.<br/><div class="moreinfo">More info: <a href="https://cordova.apache.org/announcements/2015/11/20/security.html">https://cordova.apache.org/announcements/2015/11/20/security.html</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">WrongThreadInterprocedural<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Searches for interprocedural call paths that violate thread annotations in the program. Tracks the flow of instantiated types and lambda expressions to increase accuracy across method boundaries.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/guide/components/processes-and-threads.html#Threads">https://developer.android.com/guide/components/processes-and-threads.html#Threads</a>
+</div><br/>
+<br/></div>
+</div>
+</div>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="SuppressedIssuesLink" onclick="reveal('SuppressedIssues');">
+List Missing Issues</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="MissingIssuesCardLink" onclick="hideid('MissingIssuesCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
+<a name="SuppressInfo"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="SuppressCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Suppressing Warnings and Errors</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+Lint errors can be suppressed in a variety of ways:<br/>
+<br/>
+1. With a <code>@SuppressLint</code> annotation in the Java code<br/>
+2. With a <code>tools:ignore</code> attribute in the XML file<br/>
+3. With a //noinspection comment in the source code<br/>
+4. With ignore flags specified in the <code>build.gradle</code> file, as explained below<br/>
+5. With a <code>lint.xml</code> configuration file in the project<br/>
+6. With a <code>lint.xml</code> configuration file passed to lint via the --config flag<br/>
+7. With the --ignore flag passed to lint.<br/>
+<br/>
+To suppress a lint warning with an annotation, add a <code>@SuppressLint("id")</code> annotation on the class, method or variable declaration closest to the warning instance you want to disable. The id can be one or more issue id's, such as <code>"UnusedResources"</code> or <code>{"UnusedResources","UnusedIds"}</code>, or it can be <code>"all"</code> to suppress all lint warnings in the given scope.<br/>
+<br/>
+To suppress a lint warning with a comment, add a <code>//noinspection id</code> comment on the line before the statement with the error.<br/>
+<br/>
+To suppress a lint warning in an XML file, add a <code>tools:ignore="id"</code> attribute on the element containing the error, or one of its surrounding elements. You also need to define the namespace for the tools prefix on the root element in your document, next to the <code>xmlns:android</code> declaration:<br/>
+<code>xmlns:tools="http://schemas.android.com/tools"</code><br/>
+<br/>
+To suppress a lint warning in a <code>build.gradle</code> file, add a section like this:<br/>
+
+<pre>
+android {
+    lintOptions {
+        disable 'TypographyFractions','TypographyQuotes'
+    }
+}
+</pre>
+<br/>
+Here we specify a comma separated list of issue id's after the disable command. You can also use <code>warning</code> or <code>error</code> instead of <code>disable</code> to change the severity of issues.<br/>
+<br/>
+To suppress lint warnings with a configuration XML file, create a file named <code>lint.xml</code> and place it at the root directory of the module in which it applies.<br/>
+<br/>
+The format of the <code>lint.xml</code> file is something like the following:<br/>
+
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;lint>
+    &lt;!-- Ignore everything in the test source set -->
+    &lt;issue id="all">
+        &lt;ignore path="\*/test/\*" />
+    &lt;/issue>
+
+    &lt;!-- Disable this given check in this project -->
+    &lt;issue id="IconMissingDensityFolder" severity="ignore" />
+
+    &lt;!-- Ignore the ObsoleteLayoutParam issue in the given files -->
+    &lt;issue id="ObsoleteLayoutParam">
+        &lt;ignore path="res/layout/activation.xml" />
+        &lt;ignore path="res/layout-xlarge/activation.xml" />
+        &lt;ignore regexp="(foo|bar)\.java" />
+    &lt;/issue>
+
+    &lt;!-- Ignore the UselessLeaf issue in the given file -->
+    &lt;issue id="UselessLeaf">
+        &lt;ignore path="res/layout/main.xml" />
+    &lt;/issue>
+
+    &lt;!-- Change the severity of hardcoded strings to "error" -->
+    &lt;issue id="HardcodedText" severity="error" />
+&lt;/lint>
+</pre>
+<br/>
+To suppress lint checks from the command line, pass the --ignore flag with a comma separated list of ids to be suppressed, such as:<br/>
+<code>$ lint --ignore UnusedResources,UselessLeaf /my/project/path</code><br/>
+<br/>
+For more information, see <a href="https://developer.android.com/studio/write/lint.html#config">https://developer.android.com/studio/write/lint.html#config</a><br/>
+
+            </div>
+            </div>
+          </section>    </div>
+  </main>
+</div>
+</body>
+</html>
