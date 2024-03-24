@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="web-js-js">
-    <output-path>$PROJECT_DIR$/sample/web-js/build/libs</output-path>
-    <root id="archive" name="web-js-js.jar">
-      <element id="module-output" name="ComposeSignature.sample.web-js.jsMain" />
-    </root>
-  </artifact>
-</component>
