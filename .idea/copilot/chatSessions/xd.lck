@@ -1,4 +1,4 @@
-Private property of Exodus: 35299@Joels-MacBook-Pro.local
+Private property of Exodus: 1323@Joels-MacBook-Pro.local
 
 jetbrains.exodus.io.LockingManager.lock(LockingManager.kt:88)
 jetbrains.exodus.io.LockingManager.lock(LockingManager.kt:39)
@@ -33,7 +33,7 @@ com.intellij.util.messages.impl.MessageBusImplKt.deliverMessage(MessageBusImpl.k
 com.intellij.util.messages.impl.MessageBusImplKt.pumpWaiting(MessageBusImpl.kt:401)
 com.intellij.util.messages.impl.MessageBusImplKt.access$pumpWaiting(MessageBusImpl.kt:1)
 com.intellij.util.messages.impl.MessagePublisher.invoke(MessageBusImpl.kt:460)
-jdk.proxy8/jdk.proxy8.$Proxy230.onCopilotStatus(Unknown Source)
+jdk.proxy7/jdk.proxy7.$Proxy227.onCopilotStatus(Unknown Source)
 com.github.copilot.status.CopilotStatusService.notifyApplication(CopilotStatusService.java:76)
 com.github.copilot.status.CopilotStatusService.notifyApplication(CopilotStatusService.java:64)
 com.github.copilot.github.GitHubAuthStartupActivity.handleAuthNotifications(GitHubAuthStartupActivity.java:54)

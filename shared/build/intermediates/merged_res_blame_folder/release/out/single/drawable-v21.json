@@ -1,6 +1,0 @@
-[
-    {
-        "merged": "com.sample.composesignature.shared-merged_res-40:/drawable-v21/notification_action_background.xml",
-        "source": "com.sample.composesignature.shared-core-1.12.0-27:/drawable-v21/notification_action_background.xml"
-    }
-]
