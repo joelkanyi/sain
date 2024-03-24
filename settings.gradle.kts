@@ -8,8 +8,8 @@ pluginManagement {
     }
 }
 
-rootProject.name = "ComposeSignature"
-include(":composesignature")
+rootProject.name = "Saini"
+include(":saini")
 include(":sample:shared")
 include(":sample:android")
 include(":sample:desktop")

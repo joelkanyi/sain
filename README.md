@@ -1,60 +1,129 @@
-<p align="center"><img src="demo/ComposeSignature.png" alt="MealTime" height="150px"></p>
-
-<h1 align="center">ComposeSignature</h1></br>
+<h1 align="center">Saini</h1></br>
 
 <p align="center">
-✍️ A Jetpack Compose library for capturing and exporting signatures as Bitmap with customizable options. Perfect for electronic signature, legal documents and more.
+A Compose Multiplatform library for capturing and exporting signatures as ImageBitmap with customizable options. Perfect for electronic signature, legal documents and more.
 </p>
 </br>
 
 ## Including it in your project:
 
-### Step 1. Add the JitPack repository to your `settings.gradle` file
+### Add the Maven Central repository if it is not already there:
 ```gradle
-    allprojects {
-        repositories {
-            ...
-            maven { url 'https://jitpack.io' }
-        }
-    }
+repositories {
+    mavenCentral()
+}
 ```
 
-### Step 2. Add the dependency
-```gradle
-    dependencies {
-        implementation 'com.github.JoelKanyi:ComposeSignature:1.0.3'
+### In multiplatform projects, add a dependency to the commonMain source set dependencies
+```kotlin
+kotlin {
+    sourceSets {
+        commonMain {
+             dependencies {
+                 implementation("io.github.joelkanyi:saini:2.0.0")
+             }
+        }
     }
+}
+```
+
+### In Android projects, add a dependency to the androidMain source set dependencies
+```kotlin
+dependencies {
+    implementation("io.github.joelkanyi:saini:2.0.0")
+}
 ```
 
 ### Usage
-Add the `ComposeSignature` composable into your project and customize it according to your needs:
+Add the `Saini` composable into your project and customize it according to your needs:
 ```kotlin
 var imageBitmap: ImageBitmap? by remember {
     mutableStateOf(null)
 }
 
-ComposeSignature(
+val state = remember {
+    SignatureState()
+}
+
+Saini(
+    state = state,
     modifier = Modifier
         .fillMaxWidth()
-        .padding(16.dp),
-    signaturePadColor = Color(0xFFEEEEEE),
-    signaturePadHeight = 400.dp,
-    signatureColor = Color.Black,
-    signatureThickness = 10f,
+        .height(250.dp)
+        .border(
+            BorderStroke(
+                width = .5.dp,
+                color = MaterialTheme.colorScheme.onSurface
+            ),
+            shape = RoundedCornerShape(8.dp)
+        ),
     onComplete = { signatureBitmap ->
-        imageBitmap = signatureBitmap.asImageBitmap()
+        if (signatureBitmap != null) {
+            imageBitmap = signatureBitmap
+        } else {
+            println("Signature is empty")
+        }
     },
-    onClear = {
-        imageBitmap = null
+) { action ->
+    Row(
+        modifier = Modifier
+            .padding(top = 16.dp)
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Button(
+            modifier = Modifier.weight(1f),
+            onClick = {
+                imageBitmap = null
+                action(SignatureAction.CLEAR)
+            }) {
+            Text("Clear")
+        }
+        Button(
+            modifier = Modifier.weight(1f),
+            onClick = {
+                action(SignatureAction.COMPLETE)
+            }) {
+            Text("Complete")
+        }
     }
-)
+}
 ```
 
+### Actions
+The `Saini` composable takes in an `actions` parameter which is a lambda that takes in a `SignatureAction` enum. The `SignatureAction` enum has two values:
+- `CLEAR` - Clears the signature
+- `COMPLETE` - Completes the signature and returns the signature as an `ImageBitmap` in the `onComplete` lambda
+
+### Customization
+- `signatureColor` - The color of the signature
+- `signatureThickness` - The thickness of the signature
+- `modifier` - The modifier for the `Saini` composable which allows you to customize the size, shape, background, border etc of the signature view
+
 ### Known Issues
-- Currently the library works well on protrait mode, when you rotate your device to landscape and then enter your signature, you might endup having an incomplete signature.
+The library works well in one orientation. If you rotate the device, the signature will be lost. This is a known issue and will be fixed in the next release.
+
+> Note: The library is now hosted on Maven Central. If you were using the previous version hosted on Jitpack, please update your dependencies to the latest version.
 
 ### Demo
-<img src="demo/demo.gif" width="250"/>
+#### Android
+<img src="demo/demo_android.gif" width="250"/>
+</br>
+
+#### iOS
+<img src="demo/demo_ios.gif" width="250"/>
+</br>
+
+#### Desktop
+<img src="demo/demo_desktop.gif" width="250"/>
+</br>
+
+#### Web Wasm
+<img src="demo/demo_web_wasm.gif" width="250"/>
+</br>
+
+#### Web JS
+<img src="demo/demo_web_js.gif" width="250"/>
 </br>
 
 ### License

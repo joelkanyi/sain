@@ -1,0 +1,50 @@
+public final class io/github/joelkanyi/saini/ActionsAlignment : java/lang/Enum {
+	public static final field BOTTOM Lio/github/joelkanyi/saini/ActionsAlignment;
+	public static final field LEFT Lio/github/joelkanyi/saini/ActionsAlignment;
+	public static final field RIGHT Lio/github/joelkanyi/saini/ActionsAlignment;
+	public static final field TOP Lio/github/joelkanyi/saini/ActionsAlignment;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/joelkanyi/saini/ActionsAlignment;
+	public static fun values ()[Lio/github/joelkanyi/saini/ActionsAlignment;
+}
+
+public final class io/github/joelkanyi/saini/SainiKt {
+	public static final fun Saini-uKGX-YA (Landroidx/compose/ui/Modifier;Lio/github/joelkanyi/saini/SignatureState;JFLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class io/github/joelkanyi/saini/SignatureAction : java/lang/Enum {
+	public static final field CLEAR Lio/github/joelkanyi/saini/SignatureAction;
+	public static final field COMPLETE Lio/github/joelkanyi/saini/SignatureAction;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/joelkanyi/saini/SignatureAction;
+	public static fun values ()[Lio/github/joelkanyi/saini/SignatureAction;
+}
+
+public final class io/github/joelkanyi/saini/SignatureActionKt {
+	public static final fun toAlignment (Lio/github/joelkanyi/saini/ActionsAlignment;)Landroidx/compose/ui/Alignment;
+}
+
+public final class io/github/joelkanyi/saini/SignatureLine {
+	public static final field $stable I
+	public synthetic fun <init> (JJLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-F1C5BW0 ()J
+	public final fun component2-F1C5BW0 ()J
+	public final fun copy-0a9Yr6o (JJ)Lio/github/joelkanyi/saini/SignatureLine;
+	public static synthetic fun copy-0a9Yr6o$default (Lio/github/joelkanyi/saini/SignatureLine;JJILjava/lang/Object;)Lio/github/joelkanyi/saini/SignatureLine;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEnd-F1C5BW0 ()J
+	public final fun getStart-F1C5BW0 ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/joelkanyi/saini/SignatureState {
+	public static final field $stable I
+	public fun <init> ()V
+	public final fun addSignatureLine (Lio/github/joelkanyi/saini/SignatureLine;)V
+	public final fun clearSignatureLines ()V
+	public final fun getSignature ()Landroidx/compose/ui/graphics/ImageBitmap;
+	public final fun getSignatureLines ()Ljava/util/List;
+	public final fun updateSignature (Landroidx/compose/ui/graphics/ImageBitmap;)V
+}
+

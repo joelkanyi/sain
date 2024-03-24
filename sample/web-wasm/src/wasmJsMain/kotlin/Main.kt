@@ -23,7 +23,7 @@ import com.composesignature.sample.Sample
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     CanvasBasedWindow(
-        title = "Compose Signature",
+        title = "Saini",
         canvasElementId = "ComposeTarget",
     ) {
         Box(

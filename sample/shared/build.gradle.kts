@@ -38,7 +38,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sample.composesignature.shared"
+    namespace = "com.sample.saini.shared"
     compileSdk = 34
     defaultConfig {
         minSdk = 21
@@ -75,7 +75,7 @@ kotlin {
             api(compose.runtime)
             api(compose.ui)
             api(compose.foundation)
-            implementation(project(":composesignature"))
+            implementation(project(":saini"))
         }
     }
 }

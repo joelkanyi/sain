@@ -43,9 +43,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.unit.dp
-import com.joelkanyi.composesignature.ComposeSignature
-import com.joelkanyi.composesignature.SignatureAction
-import com.joelkanyi.composesignature.SignatureState
+import io.github.joelkanyi.saini.Saini
+import io.github.joelkanyi.saini.SignatureAction
+import io.github.joelkanyi.saini.SignatureState
 
 @Composable
 fun Sample() {
@@ -75,7 +75,7 @@ fun Sample() {
                 style = MaterialTheme.typography.bodyMedium,
             )
 
-            ComposeSignature(
+            Saini(
                 state = state,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -94,31 +94,30 @@ fun Sample() {
                         println("Signature is empty")
                     }
                 },
-                actions = {
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 16.dp)
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        Button(
-                            modifier = Modifier.weight(1f),
-                            onClick = {
-                                imageBitmap = null
-                                it(SignatureAction.CLEAR)
-                            }) {
-                            Text("Clear")
-                        }
-                        Button(
-                            modifier = Modifier.weight(1f),
-                            onClick = {
-                                it(SignatureAction.COMPLETE)
-                            }) {
-                            Text("Complete")
-                        }
+            ) { action ->
+                Row(
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Button(
+                        modifier = Modifier.weight(1f),
+                        onClick = {
+                            imageBitmap = null
+                            action(SignatureAction.CLEAR)
+                        }) {
+                        Text("Clear")
+                    }
+                    Button(
+                        modifier = Modifier.weight(1f),
+                        onClick = {
+                            action(SignatureAction.COMPLETE)
+                        }) {
+                        Text("Complete")
                     }
                 }
-            )
+            }
 
             Spacer(modifier = Modifier.height(24.dp))
 

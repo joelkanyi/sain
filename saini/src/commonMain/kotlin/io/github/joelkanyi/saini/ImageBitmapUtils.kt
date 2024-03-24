@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.joelkanyi.composesignature
+package io.github.joelkanyi.saini
 
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Canvas
