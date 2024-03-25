@@ -1,3 +1,4 @@
+<img src="demo/sain.gif"/>
 # Sain
 A Compose Multiplatform library for capturing and exporting signatures as ImageBitmap with customizable options. Perfect for electronic signature, legal documents and more.
 
