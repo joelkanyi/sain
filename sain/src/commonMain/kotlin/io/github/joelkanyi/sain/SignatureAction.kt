@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.joelkanyi.saini
+package io.github.joelkanyi.sain
 
 import androidx.compose.ui.Alignment
-import io.github.joelkanyi.saini.ActionsAlignment.BOTTOM
-import io.github.joelkanyi.saini.ActionsAlignment.LEFT
-import io.github.joelkanyi.saini.ActionsAlignment.RIGHT
-import io.github.joelkanyi.saini.ActionsAlignment.TOP
-import io.github.joelkanyi.saini.SignatureAction.CLEAR
-import io.github.joelkanyi.saini.SignatureAction.COMPLETE
+import io.github.joelkanyi.sain.ActionsAlignment.BOTTOM
+import io.github.joelkanyi.sain.ActionsAlignment.LEFT
+import io.github.joelkanyi.sain.ActionsAlignment.RIGHT
+import io.github.joelkanyi.sain.ActionsAlignment.TOP
+import io.github.joelkanyi.sain.SignatureAction.CLEAR
+import io.github.joelkanyi.sain.SignatureAction.COMPLETE
 
 /**
  * SignatureAction is an enum class that represents the actions that can be performed on a signature.

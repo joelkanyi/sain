@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.joelkanyi.saini
+package io.github.joelkanyi.sain
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
- * Saini is a composable that allows the user to draw a signature on the screen.
+ * Sain is a composable that allows the user to draw a signature on the screen.
  * The resulting signature is returned as an [ImageBitmap].
  * @param modifier The modifier to apply to the signature.
  * @param signatureColor The color of the signature.
@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
  * We only have two actions: [SignatureAction.CLEAR] and [SignatureAction.COMPLETE].
  **/
 @Composable
-public fun Saini(
+public fun Sain(
     modifier: Modifier = Modifier,
     state: SignatureState,
     signatureColor: Color = MaterialTheme.colorScheme.onBackground,

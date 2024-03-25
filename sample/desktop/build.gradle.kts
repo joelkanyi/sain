@@ -33,7 +33,7 @@ compose.desktop {
                 org.jetbrains.compose.desktop.application.dsl.TargetFormat.Deb,
                 org.jetbrains.compose.desktop.application.dsl.TargetFormat.Rpm
             )
-            packageName = "compose-signature"
+            packageName = "sain"
             packageName = "1.0.0"
         }
     }

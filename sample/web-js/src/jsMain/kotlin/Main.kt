@@ -25,7 +25,7 @@ import org.jetbrains.skiko.wasm.onWasmReady
 fun main() {
     onWasmReady {
         CanvasBasedWindow(
-            title = "Saini",
+            title = "Sain",
             canvasElementId = "ComposeTarget",
         ) {
             Box(

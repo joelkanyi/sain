@@ -20,11 +20,11 @@ plugins {
 }
 
 android {
-    namespace = "com.joelkanyi.composesignature"
+    namespace = "com.joelkanyi.sain.android.sample"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.joelkanyi.composesignature"
+        applicationId = "com.joelkanyi.sain.android.sample"
         minSdk = 21
         targetSdk = compileSdk
         versionCode = 1

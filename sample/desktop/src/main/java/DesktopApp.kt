@@ -28,7 +28,7 @@ fun main() {
     return application {
         Window(
             onCloseRequest = { exitApplication() },
-            title = "Saini",
+            title = "Sain",
             state = rememberWindowState(
                 position = WindowPosition.Aligned(Alignment.Center),
                 width = 1200.dp,

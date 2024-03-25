@@ -13,18 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.joelkanyi.saini
+package com.joelkanyi.sain
 
-import androidx.compose.runtime.Immutable
-import androidx.compose.ui.geometry.Offset
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.composesignature.sample.Sample
+import com.joelkanyi.sain.ui.theme.ComposeSignatureTheme
 
-/**
- * SignatureLine is a data class that represents a line in a signature.
- * @param start The starting point of the line.
- * @param end The ending point of the line.
- */
-@Immutable
-public data class SignatureLine(
-    val start: Offset,
-    val end: Offset,
-)
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            ComposeSignatureTheme(darkTheme = false) {
+                Sample()
+            }
+        }
+    }
+}

@@ -85,7 +85,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.joelkanyi.saini"
+    namespace = "com.joelkanyi.sain"
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     compileSdk = 34
     defaultConfig {
@@ -103,9 +103,9 @@ publishing {
             artifact(javadocJar)
 
             pom {
-                name.set("Saini")
+                name.set("Sain")
                 description.set("Compose Multiplatform Signature Library")
-                url.set("https://github.com/joelkanyi/saini")
+                url.set("https://github.com/joelkanyi/sain")
 
                 licenses {
                     license {
@@ -116,7 +116,7 @@ publishing {
 
                 issueManagement {
                     system.set("GitHub Issues")
-                    url.set("https://github.com/joelkanyi/saini/issues")
+                    url.set("https://github.com/joelkanyi/sain/issues")
                 }
 
                 developers {
@@ -128,9 +128,9 @@ publishing {
                 }
 
                 scm {
-                    connection.set("scm:git:git://github.com:joelkanyi/saini.git")
-                    developerConnection.set("scm:git:ssh://github.com:joelkanyi/saini.git")
-                    url.set("https://github.com/joelkanyi/saini")
+                    connection.set("scm:git:git://github.com:joelkanyi/sain.git")
+                    developerConnection.set("scm:git:ssh://github.com:joelkanyi/sain.git")
+                    url.set("https://github.com/joelkanyi/sain")
                 }
             }
         }

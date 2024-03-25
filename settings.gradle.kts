@@ -8,8 +8,8 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Saini"
-include(":saini")
+rootProject.name = "Sain"
+include(":sain")
 include(":sample:shared")
 include(":sample:android")
 include(":sample:desktop")
