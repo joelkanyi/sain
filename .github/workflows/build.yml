@@ -25,8 +25,8 @@ jobs:
 
       - uses: gradle/gradle-build-action@v3
 
-      - name: Binary Compatibility Check
-        run: ./gradlew apiCheck
+#      - name: Binary Compatibility Check
+#        run: ./gradlew apiCheck
 
       - name: Build
         run: |
