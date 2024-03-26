@@ -91,7 +91,7 @@ version = "2.0.0-RC2"
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
-    signAllPublications()
+    //signAllPublications()
 
     pom {
         name.set("Sain")
