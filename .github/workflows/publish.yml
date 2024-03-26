@@ -10,7 +10,7 @@ on:
     types: [ released ]
 jobs:
   deploy:
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     needs: [ build ]
     timeout-minutes: 30
 
