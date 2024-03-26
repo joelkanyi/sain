@@ -13,9 +13,12 @@ permissions:
   contents: write
 
 jobs:
+  bump-version:
+    uses: ./.github/workflows/bump_version.yml
+
   deploy:
     runs-on: ubuntu-latest
-    needs: [ build ]
+    needs: bump-version
     timeout-minutes: 30
 
     steps:
@@ -26,6 +29,9 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 17
+
+      - name: Make gradle executable
+        run: chmod +x ./gradlew
 
       - uses: gradle/gradle-build-action@v3
       - name: Deploy to Maven Central

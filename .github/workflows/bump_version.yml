@@ -24,6 +24,9 @@ jobs:
           distribution: corretto
           cache: gradle
 
+      - name: Make gradle executable
+        run: chmod +x ./gradlew
+
       - name: Output before version
         id: get-before-version
         shell: bash
