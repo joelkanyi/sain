@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
@@ -22,22 +23,12 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compatibility)
     alias(libs.plugins.dokka)
-    id("maven-publish")
-    id("signing")
-}
-
-val dokkaOutputDir = buildDir.resolve("dokka")
-tasks.dokkaHtml { outputDirectory.set(file(dokkaOutputDir)) }
-val deleteDokkaOutputDir by tasks.register<Delete>("deleteDokkaOutputDirectory") { delete(dokkaOutputDir) }
-val javadocJar = tasks.create<Jar>("javadocJar") {
-    archiveClassifier.set("javadoc")
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    dependsOn(deleteDokkaOutputDir, tasks.dokkaHtml)
-    from(dokkaOutputDir)
+    alias(libs.plugins.nmcp)
+    alias(libs.plugins.gradleMavenPublish)
 }
 
 group = "io.github.joelkanyi"
-version = "2.0.0"
+version = "2.0.0-RC1"
 
 kotlin {
     applyDefaultHierarchyTemplate()
@@ -97,51 +88,49 @@ android {
     }
 }
 
-publishing {
-    publications {
-        publications.withType<MavenPublication> {
-            artifact(javadocJar)
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
-            pom {
-                name.set("Sain")
-                description.set("Compose Multiplatform Signature Library")
-                url.set("https://github.com/joelkanyi/sain")
+    signAllPublications()
 
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
+    pom {
+        name.set("Sain")
+        description.set("Compose Multiplatform Signature Library")
+        url.set("https://github.com/joelkanyi/sain")
 
-                issueManagement {
-                    system.set("GitHub Issues")
-                    url.set("https://github.com/joelkanyi/sain/issues")
-                }
-
-                developers {
-                    developer {
-                        id.set("joelkanyi")
-                        name.set("Joel Kanyi")
-                        email.set("joelkanyi98@gmail.com")
-                    }
-                }
-
-                scm {
-                    connection.set("scm:git:git://github.com:joelkanyi/sain.git")
-                    developerConnection.set("scm:git:ssh://github.com:joelkanyi/sain.git")
-                    url.set("https://github.com/joelkanyi/sain")
-                }
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
+        }
+
+        issueManagement {
+            system.set("GitHub Issues")
+            url.set("https://github.com/joelkanyi/sain/issues")
+        }
+
+        developers {
+            developer {
+                id.set("joelkanyi")
+                name.set("Joel Kanyi")
+                email.set("joelkanyi98@gmail.com")
+            }
+        }
+
+        scm {
+            connection.set("scm:git:git://github.com:joelkanyi/sain.git")
+            developerConnection.set("scm:git:ssh://github.com:joelkanyi/sain.git")
+            url.set("https://github.com/joelkanyi/sain")
         }
     }
 }
 
-
-signing {
-    if (project.hasProperty("signing.gnupg.keyName")) {
-        println("Signing lib...")
-        useGpgCmd()
-        sign(publishing.publications)
+nmcp {
+    publishAllPublications {
+        // get from ~/.gradle/gradle.properties (HOME/.gradle/gradle.properties)
+        username = properties["mavenCentralUsername"].toString()
+        password = properties["mavenCentralPassword"].toString()
+        publicationType = "AUTOMATIC"
     }
 }
