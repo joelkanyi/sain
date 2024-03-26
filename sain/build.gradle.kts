@@ -86,7 +86,7 @@ android {
 }
 
 group = "io.github.joelkanyi"
-version = "2.0.0-RC2"
+version = properties["version"] as String
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)

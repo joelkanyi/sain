@@ -1,13 +1,16 @@
 name: Publish to Maven Central Portal
 
-permissions:
-  contents: read
-
 on:
-  workflow_dispatch:
-
   release:
-    types: [ released ]
+    types:
+      - created
+
+permissions:
+  pull-requests: write
+  deployments: write
+  checks: write
+  statuses: write
+  contents: write
 
 jobs:
   deploy:
