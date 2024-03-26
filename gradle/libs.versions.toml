@@ -1,0 +1,28 @@
+[versions]
+kotlin = "1.9.23"
+agp = "8.3.1"
+core-ktx = "1.12.0"
+compose = "1.6.1"
+compose-activity = "1.8.2"
+spotless = "6.25.0"
+kotlin-compatibility = "0.14.0"
+dokka = "1.9.20"
+gradleMavenPublish = "0.28.0"
+
+[libraries]
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activity" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+
+[plugins]
+android-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
+jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-compatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlin-compatibility" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+gradleMavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "gradleMavenPublish" }
+nmcp = { id = "com.gradleup.nmcp", version = "0.0.4" }
