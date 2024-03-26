@@ -3,11 +3,14 @@ name: Build Linux
 on:
   push:
     branches:
-      - develop
       - main
   pull_request:
     branches:
-      - develop
+      - main
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
