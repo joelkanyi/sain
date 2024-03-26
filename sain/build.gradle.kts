@@ -27,9 +27,6 @@ plugins {
     alias(libs.plugins.gradleMavenPublish)
 }
 
-group = "io.github.joelkanyi"
-version = "2.0.0-RC2"
-
 kotlin {
     applyDefaultHierarchyTemplate()
 
@@ -87,6 +84,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+
+group = "io.github.joelkanyi"
+version = "2.0.0-RC2"
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
