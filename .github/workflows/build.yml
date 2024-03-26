@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - uses: gradle/gradle-build-action@v3
+
+      - name: Check
+        run: ./gradlew apiCheck
+
+      - name: Build
+        run: |
+          ./gradlew 
+            :sain:assemble \
+            :sample:shared:assemble \
+            :sample:android:assemble \
+            :sample:desktop:assemble \

@@ -34,6 +34,23 @@ dependencies {
 }
 ```
 
+#### For those using Gradle Version Catalog, you can add the dependency as follows:
+```libs.version.toml
+[versions]
+sain = "2.0.0"
+
+[libraries]
+sain = { module = "io.github.joelkanyi:sain", version.ref = "sain" }
+```
+
+#### Add then include the dependency in your project as follows:
+```kotlin
+dependencies {
+    implementation(libs.sain)
+}
+```
+</br>
+
 #### Usage
 Add the `Sain` composable into your project and customize it according to your needs:
 ```kotlin
