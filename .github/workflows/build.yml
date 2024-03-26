@@ -1,12 +1,17 @@
-name: Build Windows
+name: Build Linux
 
 on:
-  workflow_call:
-  workflow_dispatch:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -25,8 +30,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-konan-
 
-      - name: Windows build
+      - name: Linux build
         run: |
-          ./gradlew mingwX64Test publishKotlinMultiplatformPublicationToMavenLocal publishMingwX64PublicationToMavenLocal --no-daemon --stacktrace
+          ./gradlew :sain:assemble --no-daemon --stacktrace
         env:
           GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
