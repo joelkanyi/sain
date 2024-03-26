@@ -129,8 +129,8 @@ mavenPublishing {
 nmcp {
     publishAllPublications {
         // get from ~/.gradle/gradle.properties (HOME/.gradle/gradle.properties)
-        username = properties["mavenCentralUsername"].toString()
-        password = properties["mavenCentralPassword"].toString()
+        username = (properties["mavenCentralUsername"] ?: System.getenv("MAVEN_CENTRAL_USERNAME")).toString()
+        password = (properties["mavenCentralPassword"] ?: System.getenv("MAVEN_CENTRAL_PASSWORD")).toString()
         publicationType = "AUTOMATIC"
     }
 }
