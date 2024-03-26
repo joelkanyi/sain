@@ -3,19 +3,11 @@ name: Build Linux
 on:
   push:
     branches:
-      - joel
-#      - develop
-#      - main
-#  pull_request:
-#    branches:
-#      - develop
-
-env:
-  MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
-  MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-  GPG_KEY: ${{ secrets.GPG_KEY }}
-  GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-  GPG_KEY_PASSWORD: ${{ secrets.GPG_KEY_PASSWORD }}
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   build:
