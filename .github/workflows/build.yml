@@ -3,11 +3,12 @@ name: Build Linux
 on:
   push:
     branches:
-      - develop
-      - main
-  pull_request:
-    branches:
-      - develop
+      - joel
+#      - develop
+#      - main
+#  pull_request:
+#    branches:
+#      - develop
 
 env:
   MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
@@ -39,6 +40,6 @@ jobs:
 
       - name: Linux build
         run: |
-          ./gradlew :sain:assemble --no-daemon --stacktrace
+          ./gradlew :sample:shared:assemble --no-daemon --stacktrace
         env:
           GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
