@@ -20,7 +20,6 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateListOf
@@ -48,7 +47,7 @@ import androidx.compose.ui.unit.dp
 public fun Sain(
     modifier: Modifier = Modifier,
     state: SignatureState,
-    signatureColor: Color = MaterialTheme.colorScheme.onBackground,
+    signatureColor: Color = Color.Black,
     signatureThickness: Dp = 5.dp,
     onComplete: (signature: ImageBitmap?) -> Unit,
     actions: @Composable (
