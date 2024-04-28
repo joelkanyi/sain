@@ -20,7 +20,7 @@ kotlin {
     sourceSets {
         commonMain {
              dependencies {
-                 implementation("io.github.joelkanyi:sain:2.0.2")
+                 implementation("io.github.joelkanyi:sain:2.0.3")
              }
         }
     }
@@ -30,14 +30,14 @@ kotlin {
 #### In Android projects, add the dependency to your dependencies block in your app's build.gradle file:
 ```kotlin
 dependencies {
-    implementation("io.github.joelkanyi:sain:2.0.2")
+    implementation("io.github.joelkanyi:sain:2.0.3")
 }
 ```
 
 #### For those using Gradle Version Catalog, you can add the dependency as follows:
 ```libs.version.toml
 [versions]
-sain = "2.0.2"
+sain = "2.0.3"
 
 [libraries]
 sain = { module = "io.github.joelkanyi:sain", version.ref = "sain" }
