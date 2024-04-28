@@ -1,0 +1,77 @@
+site_name: Sain
+site_description: "A Simple Signature Capture Library"
+site_author: "Joel Kanyi"
+site_url: "https://joelkanyi.github.io/sain/"
+repo_name: sain
+repo_url: "https://github.com/joelkanyi/sain"
+copyright: "Copyright &copy; 2024 Joel Kanyi"
+edit_uri: "tree/main/docs/"
+docs_dir: docs
+remote_branch: gh-pages
+
+theme:
+  name: material
+  features:
+    - content.tabs.link
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - content.code.annotation
+    - navigation.instant # Instant loading of pages. Behave like a Single Page Application.
+  font:
+    text: "Roboto"
+    code: "JetBrains Mono"
+
+  language: en
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  markdown_extensions:
+    - admonition
+    - attr_list
+    - codehilite:
+      guess_lang: false
+    - footnotes
+    - toc:
+        permalink: true
+    - pymdownx.betterem
+    - pymdownx.superfences
+    - pymdownx.tabbed
+    - pymdownx.details
+    - pymdownx.tilde
+    - pymdownx.emoji:
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  plugins:
+    - social
+    - search
+    - mkdocs-video:
+        is_video: true
+        video_muted: true
+        video_controls: false
+        video_autoplay: true
+        video_loop: true
+        css_style:
+          width: "100%"
+          height: "30rem"
+
+  nav:
+    - 'Overview': index.md
+    - 'Getting Started': getting-started.md
+    - 'Usage': usage.md
+    - 'API Reference': api/
+    - 'Samples': samples.md
+    - 'License': license.md
