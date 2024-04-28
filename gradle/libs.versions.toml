@@ -1,9 +1,9 @@
 [versions]
 kotlin = "1.9.23"
-agp = "8.3.1"
-core-ktx = "1.12.0"
-compose = "1.6.1"
-compose-activity = "1.8.2"
+agp = "8.3.2"
+core-ktx = "1.13.0"
+compose = "1.6.2"
+compose-activity = "1.9.0"
 spotless = "6.25.0"
 kotlin-compatibility = "0.14.0"
 dokka = "1.9.20"
