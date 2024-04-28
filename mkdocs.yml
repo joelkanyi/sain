@@ -19,7 +19,6 @@ theme:
     - content.code.annotation
     - navigation.instant # Instant loading of pages. Behave like a Single Page Application.
   font:
-    text: "Roboto"
     code: "JetBrains Mono"
 
   language: en
