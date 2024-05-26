@@ -1,13 +1,3 @@
-public final class io/github/joelkanyi/sain/ActionsAlignment : java/lang/Enum {
-	public static final field BOTTOM Lio/github/joelkanyi/sain/ActionsAlignment;
-	public static final field LEFT Lio/github/joelkanyi/sain/ActionsAlignment;
-	public static final field RIGHT Lio/github/joelkanyi/sain/ActionsAlignment;
-	public static final field TOP Lio/github/joelkanyi/sain/ActionsAlignment;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lio/github/joelkanyi/sain/ActionsAlignment;
-	public static fun values ()[Lio/github/joelkanyi/sain/ActionsAlignment;
-}
-
 public final class io/github/joelkanyi/sain/SainKt {
 	public static final fun Sain-uKGX-YA (Landroidx/compose/ui/Modifier;Lio/github/joelkanyi/sain/SignatureState;JFLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
 }
@@ -18,10 +8,6 @@ public final class io/github/joelkanyi/sain/SignatureAction : java/lang/Enum {
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lio/github/joelkanyi/sain/SignatureAction;
 	public static fun values ()[Lio/github/joelkanyi/sain/SignatureAction;
-}
-
-public final class io/github/joelkanyi/sain/SignatureActionKt {
-	public static final fun toAlignment (Lio/github/joelkanyi/sain/ActionsAlignment;)Landroidx/compose/ui/Alignment;
 }
 
 public final class io/github/joelkanyi/sain/SignatureLine {
