@@ -50,7 +50,7 @@ jobs:
         run: mkdocs build
 
       - name: Copy Dokka output to site
-        run: cp -r build/dokka/index/*
+        run: cp -r build/dokka/html docs/dokka
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
