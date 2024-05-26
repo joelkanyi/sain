@@ -15,11 +15,6 @@
  */
 package io.github.joelkanyi.sain
 
-import androidx.compose.ui.Alignment
-import io.github.joelkanyi.sain.ActionsAlignment.BOTTOM
-import io.github.joelkanyi.sain.ActionsAlignment.LEFT
-import io.github.joelkanyi.sain.ActionsAlignment.RIGHT
-import io.github.joelkanyi.sain.ActionsAlignment.TOP
 import io.github.joelkanyi.sain.SignatureAction.CLEAR
 import io.github.joelkanyi.sain.SignatureAction.COMPLETE
 
@@ -31,28 +26,4 @@ import io.github.joelkanyi.sain.SignatureAction.COMPLETE
 public enum class SignatureAction {
     CLEAR,
     COMPLETE,
-}
-
-/**
- * Actions Alignment
- * [TOP] aligns the actions to the top.
- * [BOTTOM] aligns the actions to the bottom.
- * [LEFT] aligns the actions to the left.
- * [RIGHT] aligns the actions to the right.
- */
-public enum class ActionsAlignment {
-    TOP,
-    BOTTOM,
-    LEFT,
-    RIGHT,
-}
-
-/**
- * Converts the ActionsAlignment to Alignment.
- */
-public fun ActionsAlignment.toAlignment(): Alignment = when (this) {
-    ActionsAlignment.TOP -> Alignment.TopStart
-    ActionsAlignment.BOTTOM -> Alignment.BottomStart
-    ActionsAlignment.LEFT -> Alignment.TopStart
-    ActionsAlignment.RIGHT -> Alignment.TopEnd
 }
