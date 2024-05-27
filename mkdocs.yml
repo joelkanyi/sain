@@ -71,6 +71,6 @@ theme:
     - 'Overview': index.md
     - 'Getting Started': getting-started.md
     - 'Usage': usage.md
-    - 'API Reference': api/index.html
+    - 'API Reference': api/
     - 'Samples': samples.md
     - 'License': license.md
