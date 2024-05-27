@@ -17,16 +17,20 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.annotation
-    #- navigation.instant # Instant loading of pages. Behave like a Single Page Application.
+    - navigation.instant # Instant loading of pages. Behave like a Single Page Application.
   font:
     code: "JetBrains Mono"
+
   language: en
   palette:
+    # Palette toggle for light mode
     - scheme: default
       media: "(prefers-color-scheme: light)"
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+
+    # Palette toggle for dark mode
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
       toggle:
@@ -37,36 +41,36 @@ theme:
     - admonition
     - attr_list
     - codehilite:
-        guess_lang: false
+      guess_lang: false
     - footnotes
     - toc:
         permalink: true
-    - pymdownx.betterem
-    - pymdownx.superfences
-    - pymdownx.tabbed
-    - pymdownx.details
-    - pymdownx.tilde
+#    - pymdownx.betterem
+#    - pymdownx.superfences
+#    - pymdownx.tabbed
+#    - pymdownx.details
+#    - pymdownx.tilde
     - pymdownx.emoji:
         emoji_index: !!python/name:material.extensions.emoji.twemoji
         emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-plugins:
-  - social
-  - search
-  - mkdocs-video:
-      is_video: true
-      video_muted: true
-      video_controls: false
-      video_autoplay: true
-      video_loop: true
-      css_style:
-        width: "100%"
-        height: "30rem"
+  plugins:
+    - social
+    - search
+    - mkdocs-video:
+        is_video: true
+        video_muted: true
+        video_controls: false
+        video_autoplay: true
+        video_loop: true
+        css_style:
+          width: "100%"
+          height: "30rem"
 
-nav:
-  - Overview: index.md
-  - Getting Started: getting-started.md
-  - Usage: usage.md
-  - API Reference: site/api/index.html
-  - Samples: samples.md
-  - License: license.md
+  nav:
+    - 'Overview': index.md
+    - 'Getting Started': getting-started.md
+    - 'Usage': usage.md
+    - 'API Reference': site/api/index.html
+    - 'Samples': samples.md
+    - 'License': license.md
