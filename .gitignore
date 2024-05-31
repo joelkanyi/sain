@@ -99,3 +99,5 @@ screenshots/**/*.png
 test_output
 
 *.env*
+
+.kotlin
