@@ -50,7 +50,7 @@ theme:
   nav:
 #    - 'Overview': index.md
 #    - 'Getting Started': getting-started.md
-#    - 'Usage': usage.md
+    - 'Usage': usage.md
     - 'API Reference': api/
 #    - 'Samples': samples.md
 #    - 'License': license.md
