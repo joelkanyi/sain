@@ -12,71 +12,40 @@ remote_branch: gh-pages
 theme:
   name: material
   features:
-    - content.tabs.link
-    - content.code.copy
-    - search.suggest
-    - search.highlight
-    - content.code.annotation
-    - navigation.instant # Instant loading of pages. Behave like a Single Page Application.
-  font:
-    code: "JetBrains Mono"
-
-  language: en
+    - navigation.expand
+  icon:
+    repo: fontawesome/brands/github
   palette:
-    # Palette toggle for light mode
     - scheme: default
       media: "(prefers-color-scheme: light)"
+      primary: 'teal'
+      accent: 'teal'
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-night
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
+      primary: 'light blue'
+      accent: 'light blue'
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-sunny
         name: Switch to light mode
+
+  plugins:
+    - macros # for variables like git.tag (requires mkdocs-macros-plugin)
+    - search
 
   markdown_extensions:
     - admonition # for info/warn/tip sections
     - attr_list # for anchors in definition lists
     - def_list # for definition lists (stomp config)
     - footnotes
-    #  - smarty
-    #  - codehilite:
-    #      guess_lang: false
-    #  - footnotes
-    #  - meta
-    # For anchor links in titles
     - toc:
         permalink: true
-    #  - pymdownx.betterem:
-    #      smart_enable: all
-    #  - pymdownx.caret
     - pymdownx.emoji
     - pymdownx.highlight
-    #  - pymdownx.inlinehilite
-    #  - pymdownx.magiclink
-    #  - pymdownx.smartsymbols
-    # Necessary for code highlighting
     - pymdownx.superfences
-    # Tabs support
     - pymdownx.tabbed
-  #  - pymdownx.tilde
-  #  - tables
-
-  plugins:
-    - social
-    - search
-    - mkdocs-video:
-        is_video: true
-        video_muted: true
-        video_controls: false
-        video_autoplay: true
-        video_loop: true
-        css_style:
-          width: "100%"
-          height: "30rem"
 
   nav:
     - 'Overview': index.md
@@ -85,3 +54,17 @@ theme:
     - 'API Reference': kdoc/index.html
     - 'Samples': samples.md
     - 'License': license.md
+
+  extra:
+    social:
+      - icon: fontawesome/brands/twitter
+        link: https://x.com/_joelkanyi
+        name: "Joel on X"
+    versions:
+      jackson: 2.17.1
+      ktor: 2.3.11
+      kotlinxSerialization: 1.6.3
+      moshi: 1.15.1
+      tyrus: 2.1.5
+
+  copyright: Copyright &copy; 2023 - 2024 Joel Kanyi

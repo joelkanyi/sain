@@ -21,7 +21,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup JDK
         uses: actions/setup-java@v4
@@ -29,35 +30,21 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Generate KDocs
+        run: ./gradlew dokkaHtmlMultiModule
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - name: Install MkDocs Material
+        run: pip install mkdocs-material mkdocs-macros-plugin
 
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install mkdocs mkdocs-material mkdocs-video "mkdocs-material[imaging]"
-
-      - uses: gradle/gradle-build-action@v3
-
-      - run: ./gradlew dokkaHtmlMultiModule
-
-      - name: Build site
-        run: mkdocs build
-
-#      - name: Copy Dokka output to site
-#        #run: cp -r build/dokka/html site/api
-#        run: cp -r sain/build/dokka/html site/api
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'site'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy doc to GitHub pages
+        # --strict aborts on any warning
+        # --force forces the push to the repo (gh-pages branch)
+        run: mkdocs gh-deploy --strict --force
