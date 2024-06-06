@@ -48,18 +48,18 @@ theme:
     - pymdownx.tabbed
 
   nav:
-    - 'Overview': index.md
-    - 'Getting Started': getting-started.md
-    - 'Usage': usage.md
-    - 'API Reference': kdoc/index.html
-    - 'Samples': samples.md
-    - 'License': license.md
+#    - 'Overview': index.md
+#    - 'Getting Started': getting-started.md
+#    - 'Usage': usage.md
+    - 'API Reference': /docs/kdoc/index.html
+#    - 'Samples': samples.md
+#    - 'License': license.md
 
   extra:
     social:
       - icon: fontawesome/brands/twitter
-        link: https://x.com/_joelkanyi
-        name: "Joel on X"
+        link: https://twitter.com/_joelkanyi
+        name: "Joel on Twitter"
     versions:
       jackson: 2.17.1
       ktor: 2.3.11
