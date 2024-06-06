@@ -52,7 +52,7 @@ theme:
     - 'Getting Started': getting-started.md
     - 'Usage': usage.md
     - 'API Reference': api/
-#    - 'Samples': samples.md
+    - 'Samples': samples.md
 #    - 'License': license.md
 
   extra:
