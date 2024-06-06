@@ -51,7 +51,7 @@ theme:
 #    - 'Overview': index.md
 #    - 'Getting Started': getting-started.md
 #    - 'Usage': usage.md
-    - 'API Reference': /docs/kdoc/index.html
+    - 'API Reference': api/
 #    - 'Samples': samples.md
 #    - 'License': license.md
 
