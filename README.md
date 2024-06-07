@@ -1,6 +1,6 @@
-<p align="center"><img src="demo/sain.gif" alt="Sign" height="150px"></p>
-
 [![Maven central](https://img.shields.io/maven-central/v/io.github.joelkanyi/sain.svg)](https://search.maven.org/artifact/io.github.joelkanyi/sain) ![Build status](https://github.com/joelkanyi/sain/actions/workflows/build.yml/badge.svg)
+
+<p align="center"><img src="demo/sain.gif" alt="Sign" height="100px"></p>
 
 # Sain (サイン)
 A Compose Multiplatform library for capturing and exporting signatures as ImageBitmap with customizable options. Perfect for electronic signature, legal documents and more.
