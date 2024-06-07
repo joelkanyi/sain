@@ -51,7 +51,3 @@ subprojects {
         }
     }
 }
-
-tasks.withType<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>().configureEach {
-    outputDirectory.set(file("$rootDir/docs/kdoc"))
-}
