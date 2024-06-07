@@ -13,7 +13,7 @@ nav:
   - 'Overview': index.md
   - 'Getting Started': get-started.md
   - 'Usage': usage.md
-  - 'API Reference': kdoc/index.md
+  - 'API Reference': kdoc/sain/index.html
   - 'Demo': samples.md
   - 'License': license.md
 
