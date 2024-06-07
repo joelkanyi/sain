@@ -43,8 +43,8 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install mkdocs mkdocs-material mkdocs-video "mkdocs-material[imaging]"
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Generate Dokka documentation
         run: ./gradlew dokkaHtmlMultiModule
