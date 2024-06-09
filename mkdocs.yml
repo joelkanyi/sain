@@ -1,10 +1,9 @@
 site_name: Sain
-site_description: "A Simple Signature Capture Library"
+site_description: "A Simple Compose Multiplatform Signature Capture Library"
 site_author: "Joel Kanyi"
 site_url: "https://joelkanyi.github.io/sain/"
 repo_name: sain
 repo_url: "https://github.com/joelkanyi/sain"
-copyright: "Copyright &copy; 2024 Joel Kanyi"
 edit_uri: "tree/main/docs/"
 docs_dir: docs
 remote_branch: gh-pages
@@ -20,6 +19,14 @@ nav:
 theme:
   name: 'material'
   language: 'en'
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -45,10 +52,20 @@ markdown_extensions:
   - codehilite:
       guess_lang: false
   - footnotes
-  - toc:
-      permalink: true
   - pymdownx.betterem
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.details
   - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/joelkanyi
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/_joelkanyi
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/joel-kanyi-037270174/
+
+copyright: |
+  &copy; 2024 <a href="https://github.com/joelkanyi"  target="_blank" rel="noopener">Joel Kanyi</a>
