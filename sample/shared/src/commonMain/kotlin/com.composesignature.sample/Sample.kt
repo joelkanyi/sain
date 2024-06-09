@@ -48,9 +48,11 @@ import io.github.joelkanyi.sain.SignatureAction
 import io.github.joelkanyi.sain.SignatureState
 
 @Composable
-fun Sample() {
+fun Sample(
+    modifier: Modifier = Modifier,
+) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background,
     ) {
         var imageBitmap by remember {
@@ -67,7 +69,7 @@ fun Sample() {
                 .padding(16.dp)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
@@ -83,9 +85,9 @@ fun Sample() {
                     .border(
                         BorderStroke(
                             width = .5.dp,
-                            color = MaterialTheme.colorScheme.onSurface
+                            color = MaterialTheme.colorScheme.onSurface,
                         ),
-                        shape = RoundedCornerShape(8.dp)
+                        shape = RoundedCornerShape(8.dp),
                     ),
                 onComplete = { signatureBitmap ->
                     if (signatureBitmap != null) {
@@ -99,21 +101,23 @@ fun Sample() {
                     modifier = Modifier
                         .padding(top = 16.dp)
                         .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     Button(
                         modifier = Modifier.weight(1f),
                         onClick = {
                             imageBitmap = null
                             action(SignatureAction.CLEAR)
-                        }) {
+                        },
+                    ) {
                         Text("Clear")
                     }
                     Button(
                         modifier = Modifier.weight(1f),
                         onClick = {
                             action(SignatureAction.COMPLETE)
-                        }) {
+                        },
+                    ) {
                         Text("Complete")
                     }
                 }

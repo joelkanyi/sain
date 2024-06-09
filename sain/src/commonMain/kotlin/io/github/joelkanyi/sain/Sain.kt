@@ -43,13 +43,14 @@ import androidx.compose.ui.unit.dp
  * @param actions The composable that provides the actions that can be performed on the signature.
  * We only have two actions: [SignatureAction.CLEAR] and [SignatureAction.COMPLETE].
  **/
+@Suppress("ktlint:compose:modifier-not-used-at-root")
 @Composable
 public fun Sain(
-    modifier: Modifier = Modifier,
     state: SignatureState,
+    onComplete: (signature: ImageBitmap?) -> Unit,
+    modifier: Modifier = Modifier,
     signatureColor: Color = Color.Black,
     signatureThickness: Dp = 5.dp,
-    onComplete: (signature: ImageBitmap?) -> Unit,
     actions: @Composable (
         action: (SignatureAction) -> Unit,
     ) -> Unit,
@@ -78,9 +79,9 @@ public fun Sain(
                             signatureColor = signatureColor,
                             signatureSize = signatureThickness,
                             signatureSignatureLines = state.signatureLines,
-                        )
+                        ),
                     )
-                }
+                },
         ) {
             state.signature?.let {
                 Image(
@@ -103,7 +104,7 @@ public fun Sain(
                             state.signature
                         } else {
                             null
-                        }
+                        },
                     )
                 }
             }
@@ -125,7 +126,6 @@ public fun Sain(
 public class SignatureState {
     private val _signatureLines = mutableStateListOf<SignatureLine>()
     public val signatureLines: List<SignatureLine> get() = _signatureLines.toList()
-
 
     private val _signature = mutableStateOf<ImageBitmap?>(null)
     public val signature: ImageBitmap? get() = _signature.value

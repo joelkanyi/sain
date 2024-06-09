@@ -37,6 +37,12 @@ subprojects {
             )
             trimTrailingWhitespace()
             endWithNewline()
+
+            ktlint().customRuleSets(
+                listOf(
+                    "io.nlopez.compose.rules:ktlint:0.4.4",
+                ),
+            )
         }
         format("kts") {
             target("**/*.kts")

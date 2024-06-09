@@ -48,7 +48,7 @@ internal fun toImageBitmap(
             density = Density(1f, 1f),
             layoutDirection = LayoutDirection.Ltr,
             canvas = this,
-            size = Size(width.toFloat(), height.toFloat())
+            size = Size(width.toFloat(), height.toFloat()),
         ) {
             signatureSignatureLines.forEach { line ->
                 drawLine(
@@ -56,7 +56,7 @@ internal fun toImageBitmap(
                     start = line.start,
                     end = line.end,
                     strokeWidth = (signatureSize * 3).toPx(),
-                    cap = StrokeCap.Round
+                    cap = StrokeCap.Round,
                 )
             }
         }

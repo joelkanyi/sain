@@ -1,5 +1,5 @@
 public final class io/github/joelkanyi/sain/SainKt {
-	public static final fun Sain-uKGX-YA (Landroidx/compose/ui/Modifier;Lio/github/joelkanyi/sain/SignatureState;JFLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+	public static final fun Sain-zSi9XkE (Lio/github/joelkanyi/sain/SignatureState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;JFLkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
 }
 
 public final class io/github/joelkanyi/sain/SignatureAction : java/lang/Enum {
