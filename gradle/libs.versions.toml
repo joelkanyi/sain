@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.9.24"
+kotlin = "2.0.20"
 agp = "8.5.2"
 core-ktx = "1.13.1"
 compose = "1.6.11"
@@ -27,3 +27,4 @@ kotlin-compatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-valida
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 gradleMavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "gradleMavenPublish" }
 nmcp = { id = "com.gradleup.nmcp", version.ref = "nmcp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
