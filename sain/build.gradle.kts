@@ -25,6 +25,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.nmcp)
     alias(libs.plugins.gradleMavenPublish)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
