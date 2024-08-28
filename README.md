@@ -3,11 +3,70 @@
 <p align="center"><img src="demo/sain.gif" alt="Sign" height="100px"></p>
 
 # Sain (サイン)
-A Compose Multiplatform library for capturing and exporting signatures as ImageBitmap with customizable options. Perfect for electronic signature, legal documents and more.
+
+A Compose Multiplatform library for capturing and exporting signatures as ImageBitmap with customizable options. Perfect
+for electronic signature, legal documents and more.
 
 See the [project's website](https://joelkanyi.github.io/sain/) for documentation.
 
+```kotlin
+var imageBitmap by remember {
+    mutableStateOf<ImageBitmap?>(null)
+}
+
+val state = remember {
+    SignatureState()
+}
+
+Sain(
+    state = state,
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(250.dp)
+        .border(
+            BorderStroke(
+                width = .5.dp,
+                color = MaterialTheme.colorScheme.onSurface,
+            ),
+            shape = RoundedCornerShape(8.dp),
+        ),
+    onComplete = { signatureBitmap ->
+        if (signatureBitmap != null) {
+            imageBitmap = signatureBitmap
+        } else {
+            println("Signature is empty")
+        }
+    },
+) { action ->
+    Row(
+        modifier = Modifier
+            .padding(top = 16.dp)
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        Button(
+            modifier = Modifier.weight(1f),
+            onClick = {
+                imageBitmap = null
+                action(SignatureAction.CLEAR)
+            },
+        ) {
+            Text("Clear")
+        }
+        Button(
+            modifier = Modifier.weight(1f),
+            onClick = {
+                action(SignatureAction.COMPLETE)
+            },
+        ) {
+            Text("Complete")
+        }
+    }
+}
+```
+
 #### License
+
 ```
 Copyright 2023 Joel Kanyi
 
