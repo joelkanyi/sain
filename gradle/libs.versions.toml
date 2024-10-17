@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.0.21"
-agp = "8.6.1"
+agp = "8.7.1"
 core-ktx = "1.13.1"
 compose = "1.7.0"
 compose-activity = "1.9.3"
