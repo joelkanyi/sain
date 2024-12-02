@@ -9,12 +9,16 @@ for electronic signature, legal documents and more.
 
 See the [project's website](https://joelkanyi.github.io/sain/) for documentation.
 
-```kotlin
+```diff
 var imageBitmap by remember {
     mutableStateOf<ImageBitmap?>(null)
 }
+- val state = remember {
+-     SignatureState()
+- }
 
 Sain(
+-   state = state,
     modifier = Modifier
         .fillMaxWidth()
         .height(250.dp)
