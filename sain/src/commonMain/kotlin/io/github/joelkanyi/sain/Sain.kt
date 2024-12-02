@@ -19,11 +19,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
@@ -33,24 +36,29 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
- * Sain is a composable that allows the user to draw a signature on the screen.
- * The resulting signature is returned as an [ImageBitmap].
+ * Sain is a composable that allows the user to draw a signature on the
+ * screen. The resulting signature is returned as an [ImageBitmap].
+ *
+ * @param onComplete The callback that is called when the signature is
+ *    completed. This callback receives a nullable ImageBitmap of the
+ *    signature and can be utilized to check if the signature is empty.
  * @param modifier The modifier to apply to the signature.
  * @param signatureColor The color of the signature.
- * @param signatureThickness The thickness of the signature. Note that the thickness is multiplied by 3 to make the signature more visible.
- * @param onComplete The callback that is called when the signature is completed.
- * This callback receives a nullable ImageBitmap of the signature and can be utilized to check if the signature is empty.
- * @param actions The composable that provides the actions that can be performed on the signature.
- * We only have two actions: [SignatureAction.CLEAR] and [SignatureAction.COMPLETE].
- **/
+ * @param signatureThickness The thickness of the signature. Note that the
+ *    thickness is multiplied by 3 to make the signature more visible.
+ * @param state The state of the signature.
+ * @param actions The composable that provides the actions that can be
+ *    performed on the signature. We only have two actions:
+ *    [SignatureAction.CLEAR] and [SignatureAction.COMPLETE].
+ */
 @Suppress("ktlint:compose:modifier-not-used-at-root")
 @Composable
 public fun Sain(
-    state: SignatureState,
     onComplete: (signature: ImageBitmap?) -> Unit,
     modifier: Modifier = Modifier,
     signatureColor: Color = Color.Black,
     signatureThickness: Dp = 5.dp,
+    state: SignatureState = rememberSignatureState(),
     actions: @Composable (
         action: (SignatureAction) -> Unit,
     ) -> Unit,
@@ -87,7 +95,9 @@ public fun Sain(
                 Image(
                     bitmap = it,
                     contentDescription = "Signature",
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .aspectRatio(1f),
                 )
             }
         }
@@ -113,11 +123,12 @@ public fun Sain(
 }
 
 /**
- * SignatureState is a class that holds the state of the signature.
- * It holds the signature lines and the signature itself.
+ * SignatureState is a class that holds the state of the signature. It
+ * holds the signature lines and the signature itself.
+ *
+ * @constructor Creates a new instance of SignatureState.
  * @property signatureLines The list of signature lines.
  * @property signature The signature as an ImageBitmap.
- * @constructor Creates a new instance of SignatureState.
  * @see SignatureLine
  * @see ImageBitmap
  * @see toImageBitmap
@@ -140,5 +151,30 @@ public class SignatureState {
 
     public fun updateSignature(bitmap: ImageBitmap) {
         _signature.value = bitmap
+    }
+
+    public companion object {
+        public val Saver: Saver<SignatureState, *> = Saver(
+            save = {
+                it.signatureLines to it.signature
+            },
+            restore = {
+                SignatureState().apply {
+                    _signatureLines.addAll(it.first)
+                    _signature.value = it.second
+                }
+            },
+        )
+    }
+}
+
+/**
+ * [rememberSignatureState] is a composable that returns a [SignatureState]
+ * instance
+ */
+@Composable
+public fun rememberSignatureState(): SignatureState {
+    return rememberSaveable(saver = SignatureState.Saver) {
+        SignatureState()
     }
 }

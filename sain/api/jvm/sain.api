@@ -1,5 +1,6 @@
 public final class io/github/joelkanyi/sain/SainKt {
-	public static final fun Sain-zSi9XkE (Lio/github/joelkanyi/sain/SignatureState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;JFLkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+	public static final fun Sain-uKGX-YA (Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;JFLio/github/joelkanyi/sain/SignatureState;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+	public static final fun rememberSignatureState (Landroidx/compose/runtime/Composer;I)Lio/github/joelkanyi/sain/SignatureState;
 }
 
 public final class io/github/joelkanyi/sain/SignatureAction : java/lang/Enum {
@@ -26,11 +27,16 @@ public final class io/github/joelkanyi/sain/SignatureLine {
 
 public final class io/github/joelkanyi/sain/SignatureState {
 	public static final field $stable I
+	public static final field Companion Lio/github/joelkanyi/sain/SignatureState$Companion;
 	public fun <init> ()V
 	public final fun addSignatureLine (Lio/github/joelkanyi/sain/SignatureLine;)V
 	public final fun clearSignatureLines ()V
 	public final fun getSignature ()Landroidx/compose/ui/graphics/ImageBitmap;
 	public final fun getSignatureLines ()Ljava/util/List;
 	public final fun updateSignature (Landroidx/compose/ui/graphics/ImageBitmap;)V
+}
+
+public final class io/github/joelkanyi/sain/SignatureState$Companion {
+	public final fun getSaver ()Landroidx/compose/runtime/saveable/Saver;
 }
 

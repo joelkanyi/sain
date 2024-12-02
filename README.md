@@ -14,12 +14,7 @@ var imageBitmap by remember {
     mutableStateOf<ImageBitmap?>(null)
 }
 
-val state = remember {
-    SignatureState()
-}
-
 Sain(
-    state = state,
     modifier = Modifier
         .fillMaxWidth()
         .height(250.dp)
