@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.dp
  * @param signatureColor The color of the signature.
  * @param signatureThickness The thickness of the signature. Note that the
  *    thickness is multiplied by 3 to make the signature more visible.
+ * @param state The state of the signature.
  * @param actions The composable that provides the actions that can be
  *    performed on the signature. We only have two actions:
  *    [SignatureAction.CLEAR] and [SignatureAction.COMPLETE].
@@ -53,11 +54,11 @@ import androidx.compose.ui.unit.dp
 @Suppress("ktlint:compose:modifier-not-used-at-root")
 @Composable
 public fun Sain(
-    state: SignatureState = rememberSignatureState(),
     onComplete: (signature: ImageBitmap?) -> Unit,
     modifier: Modifier = Modifier,
     signatureColor: Color = Color.Black,
     signatureThickness: Dp = 5.dp,
+    state: SignatureState = rememberSignatureState(),
     actions: @Composable (
         action: (SignatureAction) -> Unit,
     ) -> Unit,
@@ -120,7 +121,6 @@ public fun Sain(
         }
     }
 }
-
 
 /**
  * SignatureState is a class that holds the state of the signature. It
