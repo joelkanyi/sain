@@ -18,11 +18,13 @@ package com.joelkanyi.sain
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import com.composesignature.sample.Sample
 import com.joelkanyi.sain.ui.theme.ComposeSignatureTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
             ComposeSignatureTheme(darkTheme = false) {

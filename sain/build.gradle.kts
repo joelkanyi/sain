@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
+
 import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -48,7 +49,7 @@ kotlin {
         browser()
     }
 
-    @OptIn(ExperimentalWasmDsl::class)
+    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
     wasmJs {
         browser()
     }
@@ -73,7 +74,7 @@ kotlin {
 android {
     namespace = "com.joelkanyi.sain"
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 21
     }

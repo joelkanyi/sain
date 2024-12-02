@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace = "com.joelkanyi.sain.android.sample"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.joelkanyi.sain.android.sample"

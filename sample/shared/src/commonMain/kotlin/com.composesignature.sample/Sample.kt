@@ -45,7 +45,6 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.unit.dp
 import io.github.joelkanyi.sain.Sain
 import io.github.joelkanyi.sain.SignatureAction
-import io.github.joelkanyi.sain.SignatureState
 
 @Composable
 fun Sample(
@@ -57,10 +56,6 @@ fun Sample(
     ) {
         var imageBitmap by remember {
             mutableStateOf<ImageBitmap?>(null)
-        }
-
-        val state = remember {
-            SignatureState()
         }
 
         Column(
@@ -78,7 +73,6 @@ fun Sample(
             )
 
             Sain(
-                state = state,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(250.dp)
