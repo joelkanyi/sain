@@ -9,16 +9,12 @@ for electronic signature, legal documents and more.
 
 See the [project's website](https://joelkanyi.github.io/sain/) for documentation.
 
-```diff
+```kotlin
 var imageBitmap by remember {
     mutableStateOf<ImageBitmap?>(null)
 }
-- val state = remember {
--     SignatureState()
-- }
 
 Sain(
--   state = state,
     modifier = Modifier
         .fillMaxWidth()
         .height(250.dp)
@@ -62,6 +58,88 @@ Sain(
         }
     }
 }
+```
+
+### Base64 Encoding for `ImageBitmap`
+
+To make it easier to store or transfer `ImageBitmap` across platforms in a format that is platform-independent, we provide a utility to convert `ImageBitmap` to a Base64 string. This functionality is useful in scenarios like signature storage or image uploads.
+
+Add the following lines to your `commonMain`, `androidMain`, and `iosMain` modules to implement this feature.
+
+---
+
+### Implementation
+
+#### `commonMain`
+In `commonMain`, define the `expect` function:
+
+```kotlin
+expect fun ImageBitmap.toBase64(): String
+```
+
+---
+
+#### `androidMain`
+In `androidMain`, implement the `actual` function:
+
+```kotlin
+actual fun ImageBitmap.toBase64(): String {
+    val bitmap = this.asAndroidBitmap()
+    val byteArrayOutputStream = ByteArrayOutputStream()
+    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+    val byteArray = byteArrayOutputStream.toByteArray()
+    return Base64.encodeToString(byteArray, Base64.NO_WRAP)
+}
+```
+
+**Note**: The `asAndroidBitmap()` extension function is from `androidx.compose.ui.graphics`.
+
+---
+
+#### `iosMain`
+In `iosMain`, implement the `actual` function:
+
+```kotlin
+@OptIn(ExperimentalForeignApi::class)
+fun ImageBitmap.toUIImage(): UIImage? {
+    val width = this.width
+    val height = this.height
+    val buffer = IntArray(width * height)
+
+    this.readPixels(buffer)
+
+    val colorSpace = CGColorSpaceCreateDeviceRGB()
+    val context = CGBitmapContextCreate(
+        data = buffer.refTo(0),
+        width = width.toULong(),
+        height = height.toULong(),
+        bitsPerComponent = 8u,
+        bytesPerRow = (4 * width).toULong(),
+        space = colorSpace,
+        bitmapInfo = CGImageAlphaInfo.kCGImageAlphaPremultipliedLast.value
+    )
+
+    val cgImage = CGBitmapContextCreateImage(context)
+    return cgImage?.let { UIImage.imageWithCGImage(it) }
+}
+
+actual fun ImageBitmap.toBase64(): String {
+    val uiImage = this.toUIImage()
+    val jpegData = uiImage?.let { UIImageJPEGRepresentation(it, 0.5) }
+        ?: return ""
+    return jpegData.base64Encoding()
+}
+```
+
+---
+
+### Usage
+
+To use this function in your multiplatform project:
+
+```kotlin
+val base64String = imageBitmap.toBase64()
+// Store or transfer the `base64String` as needed
 ```
 
 #### License
