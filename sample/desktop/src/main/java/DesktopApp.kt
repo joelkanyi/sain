@@ -24,20 +24,18 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.composesignature.sample.Sample
 
-fun main() {
-    return application {
-        Window(
-            onCloseRequest = { exitApplication() },
-            title = "Sain",
-            state = rememberWindowState(
-                position = WindowPosition.Aligned(Alignment.Center),
-                width = 1200.dp,
-                height = 700.dp,
-            ),
-        ) {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Sample()
-            }
+fun main() = application {
+    Window(
+        onCloseRequest = { exitApplication() },
+        title = "Sain",
+        state = rememberWindowState(
+            position = WindowPosition.Aligned(Alignment.Center),
+            width = 1200.dp,
+            height = 700.dp,
+        ),
+    ) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Sample()
         }
     }
 }

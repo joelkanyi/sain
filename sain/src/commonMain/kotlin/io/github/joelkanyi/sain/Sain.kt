@@ -173,8 +173,6 @@ public class SignatureState {
  * instance
  */
 @Composable
-public fun rememberSignatureState(): SignatureState {
-    return rememberSaveable(saver = SignatureState.Saver) {
-        SignatureState()
-    }
+public fun rememberSignatureState(): SignatureState = rememberSaveable(saver = SignatureState.Saver) {
+    SignatureState()
 }
