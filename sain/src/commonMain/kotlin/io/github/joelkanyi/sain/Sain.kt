@@ -16,10 +16,16 @@
 package io.github.joelkanyi.sain
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.CornerBasedShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateListOf
@@ -50,21 +56,36 @@ import androidx.compose.ui.unit.dp
  *    performed on the signature. We only have two actions:
  *    [SignatureAction.CLEAR] and [SignatureAction.COMPLETE].
  */
-@Suppress("ktlint:compose:modifier-not-used-at-root")
 @Composable
 public fun Sain(
     onComplete: (signature: ImageBitmap?) -> Unit,
     modifier: Modifier = Modifier,
     signatureColor: Color = Color.Black,
     signatureThickness: Dp = 5.dp,
+    signatureHeight: Dp = 250.dp,
+    signaturePadColor: Color = Color.White,
+    signaturePadBorderColor: Color = Color.Black,
+    signaturePadBorderThickness: Dp = .5.dp,
+    signaturePadShape: CornerBasedShape = RoundedCornerShape(8.dp),
     state: SignatureState = rememberSignatureState(),
     actions: @Composable (
         action: (SignatureAction) -> Unit,
     ) -> Unit,
 ) {
-    Column {
+    Column(
+        modifier = modifier
+            .fillMaxWidth(),
+    ) {
         Box(
-            modifier = modifier
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(signatureHeight)
+                .background(signaturePadColor)
+                .border(
+                    color = signaturePadBorderColor,
+                    width = signaturePadBorderThickness,
+                    shape = signaturePadShape,
+                )
                 .pointerInput(true) {
                     detectDragGestures { change, dragAmount ->
                         change.consume()

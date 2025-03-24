@@ -15,9 +15,7 @@
  */
 package com.composesignature.sample
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
@@ -73,16 +71,10 @@ fun Sample(
             )
 
             Sain(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(250.dp)
-                    .border(
-                        BorderStroke(
-                            width = .5.dp,
-                            color = MaterialTheme.colorScheme.onSurface,
-                        ),
-                        shape = RoundedCornerShape(8.dp),
-                    ),
+                signatureHeight = 250.dp,
+                signaturePadBorderColor = MaterialTheme.colorScheme.onSurface,
+                signaturePadBorderThickness = .5.dp,
+                signaturePadShape = RoundedCornerShape(8.dp),
                 onComplete = { signatureBitmap ->
                     if (signatureBitmap != null) {
                         imageBitmap = signatureBitmap
