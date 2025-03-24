@@ -19,7 +19,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
@@ -97,7 +96,6 @@ public fun Sain(
                     contentDescription = "Signature",
                     modifier = Modifier
                         .fillMaxSize()
-                        .aspectRatio(1f),
                 )
             }
         }
