@@ -3,10 +3,6 @@ public final class io/github/joelkanyi/sain/SainKt {
 	public static final fun rememberSignatureState (Landroidx/compose/runtime/Composer;I)Lio/github/joelkanyi/sain/SignatureState;
 }
 
-public final class io/github/joelkanyi/sain/SainUtils_androidKt {
-	public static final fun toBase64 (Landroidx/compose/ui/graphics/ImageBitmap;)Ljava/lang/String;
-}
-
 public final class io/github/joelkanyi/sain/SignatureAction : java/lang/Enum {
 	public static final field CLEAR Lio/github/joelkanyi/sain/SignatureAction;
 	public static final field COMPLETE Lio/github/joelkanyi/sain/SignatureAction;
