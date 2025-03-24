@@ -95,7 +95,7 @@ public fun Sain(
                     bitmap = it,
                     contentDescription = "Signature",
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxSize(),
                 )
             }
         }
