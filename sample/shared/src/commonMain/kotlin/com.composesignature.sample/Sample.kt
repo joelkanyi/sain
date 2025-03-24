@@ -39,6 +39,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.unit.dp
 import io.github.joelkanyi.sain.Sain
@@ -72,6 +73,7 @@ fun Sample(
 
             Sain(
                 signatureHeight = 250.dp,
+                signaturePadColor = Color.White,
                 signaturePadBorderColor = MaterialTheme.colorScheme.onSurface,
                 signaturePadBorderThickness = .5.dp,
                 signaturePadShape = RoundedCornerShape(8.dp),

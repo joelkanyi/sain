@@ -9,22 +9,48 @@ for electronic signature, legal documents and more.
 
 See the [project's website](https://joelkanyi.github.io/sain/) for documentation.
 
+### Breaking Changes
+For customization parameters, we are not passing them via a `modifier` anymore. Instead, we are passing them as named parameters to the `Sain` composable function. This change was made to make the API more readable and easier to use.
+The new parameters are:
+- `signatureHeight`: The height of the signature pad.
+- `signaturePadColor`: The color of the signature pad.
+- `signaturePadBorderColor`: The color of the border around the signature pad.
+- `signaturePadBorderThickness`: The thickness of the border around the signature pad.
+- `signaturePadShape`: The shape of the signature pad.
+
+```diff
+Sain(
+    modifier = Modifier
+        .fillMaxWidth(),
+-        .height(250.dp)
+-        .border(
+-            BorderStroke(
+-                width = .5.dp,
+-                color = MaterialTheme.colorScheme.onSurface,
+-            ),
+-            shape = RoundedCornerShape(8.dp),
+-        ),
++    signatureHeight = 250.dp,    
++    signaturePadColor  = Color.White,
++    signaturePadBorderColor = MaterialTheme.colorScheme.onSurface,
++    signaturePadBorderThickness = .5.dp,
++    signaturePadShape = RoundedCornerShape(8.dp),
+    onComplete = {
+```
+
+
+### Sample Usage
 ```kotlin
 var imageBitmap by remember {
     mutableStateOf<ImageBitmap?>(null)
 }
 
 Sain(
-    modifier = Modifier
-        .fillMaxWidth()
-        .height(250.dp)
-        .border(
-            BorderStroke(
-                width = .5.dp,
-                color = MaterialTheme.colorScheme.onSurface,
-            ),
-            shape = RoundedCornerShape(8.dp),
-        ),
+    signatureHeight = 250.dp,
+    signaturePadColor = Color.White,
+    signaturePadBorderColor = MaterialTheme.colorScheme.onSurface,
+    signaturePadBorderThickness = .5.dp,
+    signaturePadShape = RoundedCornerShape(8.dp),
     onComplete = { signatureBitmap ->
         if (signatureBitmap != null) {
             imageBitmap = signatureBitmap
