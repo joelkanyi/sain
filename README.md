@@ -48,8 +48,10 @@ var imageBitmap by remember {
 Sain(
     signatureHeight = 250.dp,
     signaturePadColor = Color.White,
-    signaturePadBorderColor = MaterialTheme.colorScheme.onSurface,
-    signaturePadBorderThickness = .5.dp,
+    signatureBorderStroke = BorderStroke(
+        width = .5.dp,
+        color = MaterialTheme.colorScheme.onSurface,
+    ),
     signaturePadShape = RoundedCornerShape(8.dp),
     onComplete = { signatureBitmap ->
         if (signatureBitmap != null) {
