@@ -1,5 +1,6 @@
 public final class io/github/joelkanyi/sain/SainKt {
-	public static final fun Sain-cxYskoo (Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;JFFJJFLandroidx/compose/foundation/shape/CornerBasedShape;Lio/github/joelkanyi/sain/SignatureState;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;III)V
+	public static final fun Sain-R7cLQk8 (Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;JFFJLandroidx/compose/foundation/BorderStroke;Landroidx/compose/foundation/shape/CornerBasedShape;Lio/github/joelkanyi/sain/SignatureState;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+	public static final fun Sain-uKGX-YA (Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;JFLio/github/joelkanyi/sain/SignatureState;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
 	public static final fun rememberSignatureState (Landroidx/compose/runtime/Composer;I)Lio/github/joelkanyi/sain/SignatureState;
 }
 
