@@ -1,10 +1,10 @@
 [versions]
 kotlin = "2.1.20"
 agp = "8.8.2"
-core-ktx = "1.15.0"
-compose-multipatform = "1.7.3"
+core-ktx = "1.16.0"
+compose-multipatform = "1.8.0+check"
 compose-activity = "1.10.1"
-spotless = "7.0.2"
+spotless = "7.0.3"
 kotlin-compatibility = "0.17.0"
 dokka = "2.0.0"
 gradleMavenPublish = "0.31.0"
