@@ -1,14 +1,14 @@
 [versions]
 kotlin = "2.1.21"
 agp = "8.10.0"
-core-ktx = "1.15.0"
-compose-multipatform = "1.7.3"
+core-ktx = "1.16.0"
+compose-multipatform = "1.8.2"
 compose-activity = "1.10.1"
-spotless = "7.0.2"
+spotless = "7.0.4"
 kotlin-compatibility = "0.17.0"
 dokka = "2.0.0"
-gradleMavenPublish = "0.31.0"
-nmcp = "0.0.9"
+gradleMavenPublish = "0.32.0"
+nmcp = "0.1.5"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
