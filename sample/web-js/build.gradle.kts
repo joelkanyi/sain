@@ -29,7 +29,3 @@ kotlin {
         implementation(project(":sample:shared"))
     }
 }
-
-compose.experimental {
-    web.application {}
-}
