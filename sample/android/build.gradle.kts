@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 /*
  * Copyright 2024 Joel Kanyi.
  *
@@ -22,11 +24,11 @@ plugins {
 
 android {
     namespace = "com.joelkanyi.sain.android.sample"
-    compileSdk = 35
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.joelkanyi.sain.android.sample"
-        minSdk = 21
+        minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = compileSdk
         versionCode = 1
         versionName = "1.0.0"
@@ -40,7 +42,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
 
@@ -49,8 +54,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_1_8
+        }
     }
 
     buildFeatures {

@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 /*
 * Copyright 2024 Joel Kanyi.
 *
@@ -49,13 +47,12 @@ subprojects {
         }
         format("kts") {
             target("**/*.kts")
-            targetExclude("$buildDir/**/*.kts")
             licenseHeaderFile(rootProject.file("spotless/copyright.kt"), "(^(?![\\/ ]\\*).*$)")
         }
         format("misc") {
             target("**/*.md", "**/.gitignore")
             trimTrailingWhitespace()
-            indentWithTabs()
+            leadingTabsToSpaces()
             endWithNewline()
         }
     }

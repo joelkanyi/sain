@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -22,9 +21,9 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
+    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "web"
+        outputModuleName = "web"
         browser {
             commonWebpackConfig {
                 outputFileName = "web.js"
@@ -41,8 +40,4 @@ kotlin {
         implementation(compose.ui)
         implementation(compose.foundation)
     }
-}
-
-compose.experimental {
-    web.application {}
 }
