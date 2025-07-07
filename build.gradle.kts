@@ -25,6 +25,7 @@ plugins {
     alias(libs.plugins.kotlin.compatibility) apply false
     alias(libs.plugins.dokka)
     alias(libs.plugins.compose.compiler) apply false
+    alias(libs.plugins.nmcp.aggregation)
 }
 
 subprojects {

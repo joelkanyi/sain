@@ -131,3 +131,8 @@ nmcpAggregation {
         publishingType = "AUTOMATIC"
     }
 }
+
+dependencies {
+//    nmcpAggregation(rootProject)
+    nmcpAggregation(project(":sain"))
+}
