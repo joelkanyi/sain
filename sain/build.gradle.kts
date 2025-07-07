@@ -125,10 +125,9 @@ mavenPublishing {
 }
 
 nmcp {
-    publishAllPublications {
-        // get from ~/.gradle/gradle.properties (HOME/.gradle/gradle.properties)
+    centralPortal {
         username = System.getenv("MAVEN_CENTRAL_USERNAME")
         password = System.getenv("MAVEN_CENTRAL_PASSWORD")
-        publicationType = "AUTOMATIC"
+        publishingType = "AUTOMATIC"
     }
 }
