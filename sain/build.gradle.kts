@@ -123,16 +123,3 @@ mavenPublishing {
         }
     }
 }
-
-nmcpAggregation {
-    centralPortal {
-        username = System.getenv("MAVEN_CENTRAL_USERNAME")
-        password = System.getenv("MAVEN_CENTRAL_PASSWORD")
-        publishingType = "AUTOMATIC"
-    }
-}
-
-dependencies {
-//    nmcpAggregation(rootProject)
-    nmcpAggregation(project(":sain"))
-}

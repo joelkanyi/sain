@@ -62,3 +62,18 @@ subprojects {
 tasks.withType<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>().configureEach {
     outputDirectory.set(file("$rootDir/docs/kdoc"))
 }
+
+nmcpAggregation {
+    centralPortal {
+        username = System.getenv("MAVEN_CENTRAL_USERNAME")
+        password = System.getenv("MAVEN_CENTRAL_PASSWORD")
+        publishingType = "AUTOMATIC"
+    }
+
+    publishAllProjectsProbablyBreakingProjectIsolation()
+}
+
+dependencies {
+    nmcpAggregation(project(":sain"))
+}
+
