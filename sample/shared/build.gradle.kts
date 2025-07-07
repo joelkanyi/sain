@@ -56,6 +56,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(compose.material3)
+            api(compose.materialIconsExtended)
             api(compose.runtime)
             api(compose.ui)
             api(compose.foundation)
