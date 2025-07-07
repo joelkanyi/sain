@@ -25,7 +25,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compatibility)
     alias(libs.plugins.dokka)
-    alias(libs.plugins.nmcp)
+    alias(libs.plugins.nmcp.aggregation)
     alias(libs.plugins.gradleMavenPublish)
     alias(libs.plugins.compose.compiler)
 }
@@ -124,7 +124,7 @@ mavenPublishing {
     }
 }
 
-nmcp {
+nmcpAggregation {
     centralPortal {
         username = System.getenv("MAVEN_CENTRAL_USERNAME")
         password = System.getenv("MAVEN_CENTRAL_PASSWORD")
