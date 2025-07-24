@@ -16,7 +16,6 @@
 
 @file:Suppress("DEPRECATION")
 
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -87,7 +86,7 @@ group = "io.github.joelkanyi"
 version = properties["version"] as String
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral()
 
     signAllPublications()
 
