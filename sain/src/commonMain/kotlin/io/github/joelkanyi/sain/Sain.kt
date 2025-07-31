@@ -35,6 +35,7 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
@@ -288,14 +289,25 @@ public class SignatureState {
     }
 
     public companion object {
-        public val Saver: Saver<SignatureState, *> = Saver(
-            save = {
-                it.signatureLines to it.signature
+        public val Saver: Saver<SignatureState, Any> = Saver(
+            save = { state ->
+                // Store only values that are Parcelable/Serializable
+                state.signatureLines.map { line ->
+                    listOf(line.start.x, line.start.y, line.end.x, line.end.y)
+                }
             },
-            restore = {
+            restore = { saved ->
+                @Suppress("UNCHECKED_CAST")
+                val points = saved as List<List<Float>>
                 SignatureState().apply {
-                    _signatureLines.addAll(it.first)
-                    _signature.value = it.second
+                    _signatureLines.addAll(
+                        points.map {
+                            SignatureLine(
+                                start = Offset(it[0], it[1]),
+                                end = Offset(it[2], it[3]),
+                            )
+                        },
+                    )
                 }
             },
         )
