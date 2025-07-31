@@ -16,7 +16,9 @@
 
 @file:Suppress("DEPRECATION")
 
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -39,6 +41,14 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_1_8)
         }
         publishLibraryVariants("release")
+
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+
+        dependencies {
+            androidTestImplementation("androidx.compose.ui:ui-test-junit4-android:1.8.2")
+            debugImplementation("androidx.compose.ui:ui-test-manifest:1.8.2")
+        }
     }
 
     jvm()
@@ -63,8 +73,17 @@ kotlin {
             implementation(compose.foundation)
         }
 
+        // Adds common test dependencies
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
+            implementation(kotlin("test"))
+
+            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
+        }
+
+        // Adds the desktop test dependency
+        jvmTest.dependencies {
+            implementation(compose.desktop.currentOs)
         }
     }
 }
@@ -75,6 +94,7 @@ android {
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
