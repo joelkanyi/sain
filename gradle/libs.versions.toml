@@ -1,14 +1,14 @@
 [versions]
 kotlin = "2.2.0"
 agp = "8.12.0"
-core-ktx = "1.16.0"
+core-ktx = "1.17.0"
 compose-multipatform = "1.8.2"
 compose-activity = "1.10.1"
 spotless = "7.2.1"
 kotlin-compatibility = "0.18.1"
 dokka = "2.0.0"
 gradleMavenPublish = "0.34.0"
-nmcp = "1.0.2"
+nmcp = "1.1.0"
 
 android-compileSdk = "36"
 android-minSdk = "21"
