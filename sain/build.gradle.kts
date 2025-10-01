@@ -46,8 +46,8 @@ kotlin {
         instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
 
         dependencies {
-            androidTestImplementation("androidx.compose.ui:ui-test-junit4-android:1.9.1")
-            debugImplementation("androidx.compose.ui:ui-test-manifest:1.9.1")
+            androidTestImplementation("androidx.compose.ui:ui-test-junit4-android:1.9.2")
+            debugImplementation("androidx.compose.ui:ui-test-manifest:1.9.2")
         }
     }
 
