@@ -27,20 +27,29 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 /**
  * Sain is a composable that allows the user to draw a signature on the
@@ -58,6 +67,16 @@ import androidx.compose.ui.unit.dp
  * @param signatureBorderStroke The border stroke of the signature pad.
  * @param signaturePadShape The shape of the signature pad.
  * @param state The state of the signature.
+ * @param showGuideline Whether to show the guideline or not.
+ * @param guidelineColor The color of the guideline.
+ * @param guidelineStrokeWidth The stroke width of the guideline.
+ * @param guidelineDashIntervals The dash intervals of the guideline.
+ * @param guidelinePadding The padding of the guideline from the edges of
+ *    the signature pad.
+ * @param guidelineCornerRadius The corner radius of the guideline.
+ *   This is only applicable if the guideline shape is a rounded rectangle.
+ * @param hintText The hint text to show when the signature pad is empty.
+ * @param hintTextStyle The text style of the hint text.
  * @param actions The composable that provides the actions that can be
  */
 @Composable
@@ -74,13 +93,22 @@ public fun Sain(
     ),
     signaturePadShape: CornerBasedShape = RoundedCornerShape(8.dp),
     state: SignatureState = rememberSignatureState(),
-    actions: @Composable (
-        action: (SignatureAction) -> Unit,
-    ) -> Unit,
+    showGuideline: Boolean = true,
+    guidelineColor: Color = Color.Gray,
+    guidelineStrokeWidth: Dp = 1.dp,
+    guidelineDashIntervals: FloatArray = floatArrayOf(16f, 16f),
+    guidelinePadding: Dp = 16.dp,
+    guidelineCornerRadius: Dp = 8.dp,
+    hintText: String = "Sign within this area",
+    hintTextStyle: TextStyle = TextStyle(
+        color = Color.Gray,
+        fontSize = 16.sp,
+        textAlign = TextAlign.Center,
+    ),
+    actions: @Composable (action: (SignatureAction) -> Unit) -> Unit,
 ) {
     Column(
-        modifier = modifier
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
     ) {
         Box(
             modifier = Modifier
@@ -94,17 +122,35 @@ public fun Sain(
                 .pointerInput(true) {
                     detectDragGestures { change, dragAmount ->
                         change.consume()
-
                         val signatureLine = SignatureLine(
                             start = change.position - dragAmount,
                             end = change.position,
                         )
-
                         state.addSignatureLine(signatureLine)
                     }
                 }
                 .drawWithContent {
                     drawContent()
+
+                    // Only draw guideline if enabled
+                    if (showGuideline) {
+                        val paddingPx = guidelinePadding.toPx()
+                        val rectWidth = size.width - (paddingPx * 2)
+                        val rectHeight = size.height - (paddingPx * 2)
+
+                        drawRoundRect(
+                            color = guidelineColor,
+                            topLeft = Offset(paddingPx, paddingPx),
+                            size = Size(rectWidth, rectHeight),
+                            style = Stroke(
+                                width = guidelineStrokeWidth.toPx(),
+                                pathEffect = PathEffect.dashPathEffect(guidelineDashIntervals),
+                            ),
+                            cornerRadius = CornerRadius(guidelineCornerRadius.toPx()),
+                        )
+                    }
+
+                    // Update signature bitmap
                     state.updateSignature(
                         toImageBitmap(
                             width = size.width.toInt(),
@@ -116,29 +162,31 @@ public fun Sain(
                     )
                 },
         ) {
+            // Render signature image if exists
             state.signature?.let {
                 Image(
                     bitmap = it,
                     contentDescription = "Signature",
-                    modifier = Modifier
-                        .fillMaxSize(),
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
+
+            // Show hint text only when empty & guideline enabled
+            if (showGuideline && state.signatureLines.isEmpty()) {
+                BasicText(
+                    text = hintText,
+                    modifier = Modifier.align(Alignment.Center),
+                    style = hintTextStyle,
                 )
             }
         }
 
         actions {
             when (it) {
-                SignatureAction.CLEAR -> {
-                    state.clearSignatureLines()
-                }
-
+                SignatureAction.CLEAR -> state.clearSignatureLines()
                 SignatureAction.COMPLETE -> {
                     onComplete(
-                        if (state.signatureLines.isNotEmpty()) {
-                            state.signature
-                        } else {
-                            null
-                        },
+                        if (state.signatureLines.isNotEmpty()) state.signature else null,
                     )
                 }
             }

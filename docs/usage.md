@@ -66,4 +66,12 @@ The `Sain` composable takes in an `actions` parameter which is a lambda that tak
 - `signaturePadColor`: The color of the signature pad.
 - `signatureBorderStroke`: The border stroke of the signature pad.
 - `signaturePadShape`: The shape of the signature pad.
+- `showGuideline`: Whether to show a guideline on the signature pad or not.
+- `guidelineColor`: The color of the guideline.
+- `guidelineStrokeWidth`: The stroke width of the guideline.
+- `guidelineDashIntervals`: The dash intervals of the guideline.
+- `guidelinePadding`: The padding of the guideline from the edges of the signature pad.
+- `guidelineCornerRadius`: The corner radius of the guideline. This is only applicable if the guideline shape is a rounded rectangle.
+- `hintText`: The hint text to show when the signature pad is empty.
+- `hintTextStyle`: The text style of the hint text.
   </br>
