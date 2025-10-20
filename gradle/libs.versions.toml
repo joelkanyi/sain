@@ -2,11 +2,11 @@
 kotlin = "2.2.20"
 agp = "8.13.0"
 core-ktx = "1.17.0"
-compose-multipatform = "1.9.0"
+compose-multipatform = "1.9.1"
 compose-activity = "1.11.0"
 spotless = "8.0.0"
 kotlin-compatibility = "0.18.1"
-dokka = "2.0.0"
+dokka = "2.1.0"
 gradleMavenPublish = "0.34.0"
 nmcp = "1.2.0"
 
