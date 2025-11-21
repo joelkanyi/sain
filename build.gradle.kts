@@ -42,7 +42,7 @@ subprojects {
 
             ktlint().customRuleSets(
                 listOf(
-                    "io.nlopez.compose.rules:ktlint:0.4.27",
+                    "io.nlopez.compose.rules:ktlint:0.4.28",
                 ),
             )
         }
