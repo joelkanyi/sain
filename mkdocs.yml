@@ -1,5 +1,5 @@
 site_name: Sain
-site_description: "A Simple Compose Multiplatform Signature Capture Library"
+site_description: "A Compose Multiplatform library for capturing and exporting signatures as ImageBitmap."
 site_author: "Joel Kanyi"
 site_url: "https://joelkanyi.github.io/sain/"
 repo_name: sain
@@ -21,6 +21,7 @@ theme:
   language: 'en'
   features:
     - navigation.sections
+    - navigation.tabs
     - navigation.top
     - search.suggest
     - search.highlight
@@ -49,14 +50,20 @@ plugins:
 markdown_extensions:
   - admonition
   - attr_list
-  - codehilite:
-      guess_lang: false
+  - md_in_html
   - footnotes
   - pymdownx.betterem
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.details
   - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
 
 extra:
   social:
@@ -68,4 +75,4 @@ extra:
       link: https://www.linkedin.com/in/joel-kanyi-037270174/
 
 copyright: |
-  &copy; 2024 <a href="https://github.com/joelkanyi"  target="_blank" rel="noopener">Joel Kanyi</a>
+  &copy; 2025 <a href="https://github.com/joelkanyi"  target="_blank" rel="noopener">Joel Kanyi</a>

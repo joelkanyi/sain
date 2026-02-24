@@ -1,45 +1,107 @@
-### Including it in your project:
+# Getting Started
 
-#### Add the Maven Central repository if it is not already there:
-```gradle
+## Prerequisites
+
+- A **Kotlin Multiplatform** or **Android** project with the **Compose Multiplatform** plugin applied
+
+## Add Repository
+
+Ensure `mavenCentral()` is in your repositories block (this is the default for most projects):
+
+```kotlin
 repositories {
     mavenCentral()
 }
 ```
 
-#### In multiplatform projects, add a dependency to the commonMain source set dependencies
-```kotlin
-kotlin {
-    sourceSets {
-        commonMain {
-             dependencies {
-                 implementation("io.github.joelkanyi:sain:<latest-version>")
-             }
+## Add Dependency
+
+### Multiplatform Projects
+
+Add the dependency to your `commonMain` source set dependencies:
+
+=== "Kotlin DSL"
+
+    ```kotlin
+    kotlin {
+        sourceSets {
+            commonMain {
+                dependencies {
+                    implementation("io.github.joelkanyi:sain:<latest-version>")
+                }
+            }
         }
     }
-}
-```
+    ```
 
-#### In Android projects, add the dependency to your dependencies block in your app's build.gradle file:
-```kotlin
-dependencies {
-    implementation("io.github.joelkanyi:sain:<latest-version>")
-}
-```
+=== "Version Catalog"
 
-#### For those using Gradle Version Catalog, you can add the dependency as follows:
-```libs.version.toml
-[versions]
-sain = "<latest-version>"
+    Add to your `libs.versions.toml`:
 
-[libraries]
-sain = { module = "io.github.joelkanyi:sain", version.ref = "sain" }
-```
+    ```toml
+    [versions]
+    sain = "<latest-version>"
 
-#### Add then include the dependency in your project as follows:
-```kotlin
-dependencies {
-    implementation(libs.sain)
-}
-```
-</br>
+    [libraries]
+    sain = { module = "io.github.joelkanyi:sain", version.ref = "sain" }
+    ```
+
+    Then in your `build.gradle.kts`:
+
+    ```kotlin
+    kotlin {
+        sourceSets {
+            commonMain {
+                dependencies {
+                    implementation(libs.sain)
+                }
+            }
+        }
+    }
+    ```
+
+### Android Projects
+
+If you are working on an Android-only project, add the dependency directly to your app's `build.gradle.kts`:
+
+=== "Kotlin DSL"
+
+    ```kotlin
+    dependencies {
+        implementation("io.github.joelkanyi:sain:<latest-version>")
+    }
+    ```
+
+=== "Version Catalog"
+
+    Add to your `libs.versions.toml`:
+
+    ```toml
+    [versions]
+    sain = "<latest-version>"
+
+    [libraries]
+    sain = { module = "io.github.joelkanyi:sain", version.ref = "sain" }
+    ```
+
+    Then in your `build.gradle.kts`:
+
+    ```kotlin
+    dependencies {
+        implementation(libs.sain)
+    }
+    ```
+
+## Platform Notes
+
+| Platform | Status |
+|----------|--------|
+| **Android** | Works out of the box |
+| **iOS** | Requires Compose Multiplatform iOS support enabled in your project |
+| **Desktop (JVM)** | Works out of the box with JVM target |
+| **Web (JS)** | Works with `js(IR)` browser target |
+| **Web (WasmJS)** | Works with `wasmJs` browser target |
+
+## Next Steps
+
+Head over to the [Usage](usage.md) page to learn how to use the signature pad in your app.

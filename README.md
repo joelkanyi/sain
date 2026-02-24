@@ -1,19 +1,88 @@
-[![Maven central](https://img.shields.io/maven-central/v/io.github.joelkanyi/sain.svg)](https://search.maven.org/artifact/io.github.joelkanyi/sain) ![Build status](https://github.com/joelkanyi/sain/actions/workflows/build.yml/badge.svg)
-
-<p align="center"><img src="demo/sain.gif" alt="Sign" height="100px"></p>
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.joelkanyi/sain.svg)](https://search.maven.org/artifact/io.github.joelkanyi/sain)
+![Build](https://github.com/joelkanyi/sain/actions/workflows/build.yml/badge.svg)
+![Kotlin](https://img.shields.io/badge/Kotlin-Multiplatform-7F52FF?logo=kotlin&logoColor=white)
+![Compose Multiplatform](https://img.shields.io/badge/Compose-Multiplatform-4285F4?logo=jetpackcompose&logoColor=white)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Sain (サイン)
 
-A Compose Multiplatform library for capturing and exporting signatures as ImageBitmap with customizable options. Perfect
-for electronic signature, legal documents and more.
+A Compose Multiplatform library for capturing and exporting signatures as `ImageBitmap` with customizable options. Perfect for electronic signatures, legal documents, and more.
 
-See the [project's website](https://joelkanyi.github.io/sain/) for documentation.
+**Supported platforms:** Android · iOS · Desktop (JVM) · Web (JS) · Web (WasmJS)
 
-### Sample Usage
+See the [project's website](https://joelkanyi.github.io/sain/) for full documentation.
+
+## Features
+
+- Capture signatures as `ImageBitmap` on all platforms
+- Customizable signature color, thickness, pad color, shape, and border
+- Optional guideline with configurable style, padding, and dash pattern
+- Hint text when the signature pad is empty
+- State management with `rememberSignatureState()` for persistence
+- Clear and complete actions via `SignatureAction`
+
+## Installation
+
+Add the Maven Central repository if it is not already there:
+
 ```kotlin
-var imageBitmap by remember {
-    mutableStateOf<ImageBitmap?>(null)
+repositories {
+    mavenCentral()
 }
+```
+
+### Multiplatform Projects
+
+Add the dependency to your `commonMain` source set:
+
+```kotlin
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation("io.github.joelkanyi:sain:<latest-version>")
+            }
+        }
+    }
+}
+```
+
+### Android Projects
+
+Add the dependency to your app's `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation("io.github.joelkanyi:sain:<latest-version>")
+}
+```
+
+### Gradle Version Catalog
+
+Add the following to your `libs.versions.toml`:
+
+```toml
+[versions]
+sain = "<latest-version>"
+
+[libraries]
+sain = { module = "io.github.joelkanyi:sain", version.ref = "sain" }
+```
+
+Then add the dependency in your `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation(libs.sain)
+}
+```
+
+## Quick Start
+
+Add the `Sain` composable to your project:
+
+```kotlin
+var imageBitmap by remember { mutableStateOf<ImageBitmap?>(null) }
 
 Sain(
     signatureHeight = 250.dp,
@@ -58,89 +127,17 @@ Sain(
 }
 ```
 
-### Base64 Encoding for `ImageBitmap`
+## Preview
 
-To make it easier to store or transfer `ImageBitmap` across platforms in a format that is platform-independent, we provide a utility to convert `ImageBitmap` to a Base64 string. This functionality is useful in scenarios like signature storage or image uploads.
+| Android | iOS | Desktop |
+|:-------:|:---:|:-------:|
+| <img src="demo/android_demo.gif" width="220"/> | <img src="demo/ios_demo.gif" width="220"/> | <img src="demo/desktop_demo.gif" width="300"/> |
 
-Add the following lines to your `commonMain`, `androidMain`, and `iosMain` modules to implement this feature.
+| Web (JS) | Web (WasmJS) |
+|:--------:|:------------:|
+| <img src="demo/web_js_demo.gif" width="300"/> | <img src="demo/demo_web_wasm.gif" width="300"/> |
 
----
-
-### Implementation
-
-#### `commonMain`
-In `commonMain`, define the `expect` function:
-
-```kotlin
-expect fun ImageBitmap.toBase64(): String
-```
-
----
-
-#### `androidMain`
-In `androidMain`, implement the `actual` function:
-
-```kotlin
-actual fun ImageBitmap.toBase64(): String {
-    val bitmap = this.asAndroidBitmap()
-    val byteArrayOutputStream = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
-    val byteArray = byteArrayOutputStream.toByteArray()
-    return Base64.encodeToString(byteArray, Base64.NO_WRAP)
-}
-```
-
-**Note**: The `asAndroidBitmap()` extension function is from `androidx.compose.ui.graphics`.
-
----
-
-#### `iosMain`
-In `iosMain`, implement the `actual` function:
-
-```kotlin
-@OptIn(ExperimentalForeignApi::class)
-fun ImageBitmap.toUIImage(): UIImage? {
-    val width = this.width
-    val height = this.height
-    val buffer = IntArray(width * height)
-
-    this.readPixels(buffer)
-
-    val colorSpace = CGColorSpaceCreateDeviceRGB()
-    val context = CGBitmapContextCreate(
-        data = buffer.refTo(0),
-        width = width.toULong(),
-        height = height.toULong(),
-        bitsPerComponent = 8u,
-        bytesPerRow = (4 * width).toULong(),
-        space = colorSpace,
-        bitmapInfo = CGImageAlphaInfo.kCGImageAlphaPremultipliedLast.value
-    )
-
-    val cgImage = CGBitmapContextCreateImage(context)
-    return cgImage?.let { UIImage.imageWithCGImage(it) }
-}
-
-actual fun ImageBitmap.toBase64(): String {
-    val uiImage = this.toUIImage()
-    val jpegData = uiImage?.let { UIImageJPEGRepresentation(it, 0.5) }
-        ?: return ""
-    return jpegData.base64Encoding()
-}
-```
-
----
-
-### Usage
-
-To use this function in your multiplatform project:
-
-```kotlin
-val base64String = imageBitmap.toBase64()
-// Store or transfer the `base64String` as needed
-```
-
-#### License
+## License
 
 ```
 Copyright 2023 Joel Kanyi
