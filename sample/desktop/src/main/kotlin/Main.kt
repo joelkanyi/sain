@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Joel Kanyi.
+ * Copyright 2024 Joel Kanyi.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,28 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
-import androidx.compose.ui.window.rememberWindowState
 import com.composesignature.sample.Sample
 
 fun main() = application {
     Window(
-        onCloseRequest = { exitApplication() },
+        onCloseRequest = ::exitApplication,
         title = "Sain",
-        state = rememberWindowState(
-            position = WindowPosition.Aligned(Alignment.Center),
-            width = 1200.dp,
-            height = 700.dp,
-        ),
     ) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        MaterialTheme {
             Sample()
         }
     }

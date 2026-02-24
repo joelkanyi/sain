@@ -25,7 +25,9 @@ kotlin {
         binaries.executable()
     }
 
-    sourceSets.jsMain.dependencies {
-        implementation(project(":sample:shared"))
+    sourceSets {
+        jsMain.dependencies {
+            implementation(project(":sample:shared"))
+        }
     }
 }

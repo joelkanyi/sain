@@ -13,22 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    alias(libs.plugins.multiplatform)
-    alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.compose.compiler)
-}
+package com.composesignature.sample
 
-kotlin {
-    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.window.ComposeUIViewController
 
-    sourceSets {
-        wasmJsMain.dependencies {
-            implementation(project(":sample:shared"))
-        }
+@Suppress("ktlint:standard:function-naming")
+fun MainViewController() = ComposeUIViewController {
+    MaterialTheme {
+        Sample()
     }
 }
