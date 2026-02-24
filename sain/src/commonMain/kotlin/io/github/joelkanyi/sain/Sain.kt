@@ -78,6 +78,12 @@ import androidx.compose.ui.unit.sp
  * @param hintText The hint text to show when the signature pad is empty.
  * @param hintTextStyle The text style of the hint text.
  * @param actions The composable that provides the actions that can be
+ *    performed on the signature. Invoke the provided callback with
+ *    [SignatureAction.CLEAR] to erase all drawn lines, or
+ *    [SignatureAction.COMPLETE] to finish and deliver the signature bitmap
+ *    via [onComplete].
+ * @see SignatureAction
+ * @see SignatureState
  */
 @Composable
 public fun Sain(
@@ -184,6 +190,7 @@ public fun Sain(
         actions {
             when (it) {
                 SignatureAction.CLEAR -> state.clearSignatureLines()
+
                 SignatureAction.COMPLETE -> {
                     onComplete(
                         if (state.signatureLines.isNotEmpty()) state.signature else null,
@@ -307,14 +314,19 @@ public fun Sain(
 
 /**
  * SignatureState is a class that holds the state of the signature. It
- * holds the signature lines and the signature itself.
+ * holds the signature lines and the rendered signature bitmap.
+ *
+ * The [signatureLines] property returns a defensive copy (snapshot) of the
+ * internal list, so callers cannot mutate the state directly.
  *
  * @constructor Creates a new instance of SignatureState.
- * @property signatureLines The list of signature lines.
- * @property signature The signature as an ImageBitmap.
+ * @property signatureLines A snapshot of the current signature lines.
+ *    Returns a new list on every access; mutations to the returned list
+ *    do not affect the internal state.
+ * @property signature The most recently rendered signature as an
+ *    [ImageBitmap], or `null` if the signature has not been rendered yet.
  * @see SignatureLine
  * @see ImageBitmap
- * @see toImageBitmap
  */
 @Stable
 public class SignatureState {
@@ -363,8 +375,10 @@ public class SignatureState {
 }
 
 /**
- * [rememberSignatureState] is a composable that returns a [SignatureState]
- * instance
+ * Creates and remembers a [SignatureState] that survives configuration
+ * changes (e.g. screen rotation) via [rememberSaveable].
+ *
+ * @return A remembered [SignatureState] instance.
  */
 @Composable
 public fun rememberSignatureState(): SignatureState = rememberSaveable(saver = SignatureState.Saver) {

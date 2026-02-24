@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-@file:Suppress("DEPRECATION")
-
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
@@ -26,7 +24,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compatibility)
     alias(libs.plugins.dokka)
-    alias(libs.plugins.nmcp.aggregation)
     alias(libs.plugins.gradleMavenPublish)
     alias(libs.plugins.compose.compiler)
 }

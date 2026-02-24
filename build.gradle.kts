@@ -14,6 +14,9 @@
 * limitations under the License.
 */
 
+import java.net.URI
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
@@ -40,9 +43,15 @@ subprojects {
             trimTrailingWhitespace()
             endWithNewline()
 
-            ktlint().customRuleSets(
+            ktlint(
+                "1.8.0"
+            ).customRuleSets(
                 listOf(
-                    "io.nlopez.compose.rules:ktlint:0.4.27",
+                    "io.nlopez.compose.rules:ktlint:0.5.6",
+                ),
+            ).editorConfigOverride(
+                mapOf(
+                    "ktlint_standard_no-wildcard-imports" to "disabled",
                 ),
             )
         }
@@ -59,8 +68,33 @@ subprojects {
     }
 }
 
-tasks.withType<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>().configureEach {
-    outputDirectory.set(file("$rootDir/docs/kdoc"))
+dokka {
+    moduleName.set("Sain")
+
+    dokkaPublications.html {
+        outputDirectory.set(rootDir.resolve("docs/kdoc"))
+        suppressInheritedMembers.set(true)
+        failOnWarning.set(true)
+    }
+
+    dokkaSourceSets.configureEach {
+        includes.from("README.md")
+        documentedVisibilities.set(setOf(VisibilityModifier.Public))
+
+        sourceLink {
+            localDirectory.set(file("src/main/kotlin"))
+            remoteUrl.set(URI("https://github.com/joelkanyi/sain"))
+            remoteLineSuffix.set("#L")
+        }
+
+        externalDocumentationLinks.register("kotlin") {
+            url.set(URI("https://kotlinlang.org/api/latest/jvm/stdlib/"))
+        }
+    }
+}
+
+dependencies {
+    dokka(project(":sain"))
 }
 
 nmcpAggregation {

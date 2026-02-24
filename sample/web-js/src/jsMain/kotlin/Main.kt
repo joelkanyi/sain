@@ -13,26 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
 import com.composesignature.sample.Sample
-import org.jetbrains.skiko.wasm.onWasmReady
+import kotlinx.browser.document
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    onWasmReady {
-        CanvasBasedWindow(
-            title = "Sain",
-            canvasElementId = "ComposeTarget",
-        ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-            ) {
-                Sample()
-            }
+    ComposeViewport(document.body!!) {
+        MaterialTheme {
+            Sample()
         }
     }
 }

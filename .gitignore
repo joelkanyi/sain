@@ -1,74 +1,65 @@
-# Gradle
+# Gradle build directory and local Gradle settings
 .gradle
 build/
 
+# Directory for test captures
 captures
 
+# Local properties file, typically contains machine-specific configurations
 /local.properties
 
-# IntelliJ .idea folder
-.idea/workspace.xml
-.idea/misc.xml
-.idea/libraries
-.idea/caches
-.idea/navEditor.xml
-.idea/tasks.xml
-.idea/modules.xml
-.idea/compiler.xml
-.idea/jarRepositories.xml
-.idea/deploymentTargetDropDown.xml
-.idea/androidTestResultsUserPreferences.xml
-.idea/appInsightsSettings.xml
-.idea/artifacts
-gradle.xml
+# IntelliJ IDEA specific files and directories
+.idea/
 *.iml
 .fleet
 
-# General
+# General OS and build system specific files
 .DS_Store
 .externalNativeBuild
 
-# Do not commit plain-text release keys
+# Security: Do not commit plain-text release keys
 app-release.jks
 play-account.p12
 play-account.json
 
-# Do not commit firebase config
+# Security: Do not commit Firebase configuration
 google-services.json
 
-# VS Code config
+# VS Code project-specific settings and build outputs
 org.eclipse.buildship.core.prefs
 .classpath
 .project
 bin/
 
-# Docs
+# Documentation and cache directories
 site/
 .cache/
+docs/kdoc/
 
-# Ignore baseline profile files in samples
+# Kotlin/JS store
+kotlin-js-store/
+
+# Ignore baseline profile files in sample projects
 sample/**/generated
 
 ##########################################################################################
 # Imported from https://github.com/github/gitignore/blob/main/Swift.gitignore
 ##########################################################################################
 
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# Xcode specific files and directories
 
 ## User settings
 xcuserdata/
 
-## Obj-C/Swift specific
+## Obj-C/Swift specific generated files
 *.hmap
 
-## App packaging
+## App packaging artifacts
 *.ipa
 *.dSYM.zip
 *.dSYM
 
-## Playgrounds
+## Swift playground files
 timeline.xctimeline
 playground.xcworkspace
 
@@ -98,6 +89,8 @@ Preview.html
 screenshots/**/*.png
 test_output
 
+# Environment configuration files
 *.env*
 
+# Kotlin specific build and cache directories - Kotlin 2.0
 .kotlin

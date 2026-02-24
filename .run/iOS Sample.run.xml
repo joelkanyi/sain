@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="iOS Sample" type="KmmRunConfiguration" factoryName="iOS Application">
+    <option name="projectFilePath" value="$PROJECT_DIR$/sample/iosApp/iosApp.xcodeproj" />
+    <option name="productName" value="iosApp" />
+    <option name="schemeName" value="iosApp" />
+    <option name="configuration" value="Debug" />
+    <method v="2" />
+  </configuration>
+</component>

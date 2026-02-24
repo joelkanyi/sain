@@ -19,9 +19,14 @@ import io.github.joelkanyi.sain.SignatureAction.CLEAR
 import io.github.joelkanyi.sain.SignatureAction.COMPLETE
 
 /**
- * SignatureAction is an enum class that represents the actions that can be performed on a signature.
- * [CLEAR] clears the signature. You can take advantage here and clear the signature from your implementation size.
- * [COMPLETE] completes the signature. Once the signature is completed, you receive an ImageBitmap of the signature.
+ * SignatureAction is an enum class that represents the actions that can be
+ * performed on a signature.
+ *
+ * [CLEAR] erases all drawn lines, resetting the signature pad to its
+ * initial empty state.
+ *
+ * [COMPLETE] finalizes the signature and delivers the rendered
+ * [androidx.compose.ui.graphics.ImageBitmap] via the `onComplete` callback.
  **/
 public enum class SignatureAction {
     CLEAR,
