@@ -14,28 +14,19 @@
  * limitations under the License.
  */
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kmp.library)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
 }
 
-android {
-    namespace = "com.sample.sain.shared"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-    }
-}
-
 kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_1_8)
-        }
+    androidLibrary {
+        namespace = "com.sample.sain.shared"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 
     jvm()
@@ -62,11 +53,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            @Suppress("DEPRECATION_ERROR")
             api(compose.material3)
+            @Suppress("DEPRECATION_ERROR")
             api(compose.materialIconsExtended)
-            api(compose.runtime)
-            api(compose.ui)
-            api(compose.foundation)
+            api(libs.compose.runtime)
+            api(libs.compose.ui)
+            api(libs.compose.foundation)
             implementation(project(":sain"))
         }
     }
