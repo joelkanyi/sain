@@ -20,6 +20,7 @@ import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.kmp.library) apply false
     alias(libs.plugins.android.kotlin) apply false
     alias(libs.plugins.multiplatform) apply false
     alias(libs.plugins.jvm) apply false
@@ -47,7 +48,7 @@ subprojects {
                 "1.8.0"
             ).customRuleSets(
                 listOf(
-                    "io.nlopez.compose.rules:ktlint:0.5.6",
+                    "io.nlopez.compose.rules:ktlint:0.5.8",
                 ),
             ).editorConfigOverride(
                 mapOf(
@@ -104,6 +105,7 @@ nmcpAggregation {
         publishingType = "AUTOMATIC"
     }
 
+    allowDuplicateProjectNames.set(true)
     publishAllProjectsProbablyBreakingProjectIsolation()
 }
 

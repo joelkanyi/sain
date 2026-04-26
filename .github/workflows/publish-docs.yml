@@ -34,7 +34,7 @@ jobs:
           python-version: '3.x'
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Install dependencies
         run: |
@@ -42,7 +42,7 @@ jobs:
           python3 -m pip install mkdocs mkdocs-material mkdocs-video "mkdocs-material[imaging]"
 
       - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v5
+        uses: gradle/actions/setup-gradle@v6
 
       - name: Generate Dokka documentation
         run: ./gradlew dokkaGeneratePublicationHtml
@@ -51,10 +51,10 @@ jobs:
         run: mkdocs build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: 'site/' # MkDocs builds to site/ by default
 
       - name: Deploy to GitHub Pages
         id: deployment # This is required for environment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

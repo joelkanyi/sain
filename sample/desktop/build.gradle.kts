@@ -21,6 +21,7 @@ plugins {
 
 dependencies {
     implementation(project(":sample:shared"))
+    @Suppress("DEPRECATION_ERROR")
     implementation(compose.desktop.currentOs)
 }
 
