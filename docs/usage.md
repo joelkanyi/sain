@@ -96,65 +96,26 @@ The `SignatureAction` enum has two values:
 | `hintText` | `String` | `"Sign within this area"` | The hint text displayed when the signature pad is empty. |
 | `hintTextStyle` | `TextStyle` | Gray, 16sp, centered | The text style of the hint text. |
 
-## Base64 Encoding
+## Exporting the Signature
 
-To store or transfer an `ImageBitmap` in a platform-independent format, you can convert it to a Base64 string. Define an `expect`/`actual` function across your source sets:
+Sain ships with helpers to export the captured `ImageBitmap` in a platform-independent format on all targets (Android, iOS, JVM, JS, and WASM):
 
-### commonMain
-
-```kotlin
-expect fun ImageBitmap.toBase64(): String
-```
-
-### androidMain
+| Function | Returns | Description |
+|----------|---------|-------------|
+| `ImageBitmap.toPngByteArray()` | `ByteArray` | The bitmap encoded as PNG bytes. |
+| `ImageBitmap.toBase64()` | `String` | The Base64 string of the PNG-encoded bitmap. |
 
 ```kotlin
-actual fun ImageBitmap.toBase64(): String {
-    val bitmap = this.asAndroidBitmap()
-    val byteArrayOutputStream = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
-    val byteArray = byteArrayOutputStream.toByteArray()
-    return Base64.encodeToString(byteArray, Base64.NO_WRAP)
-}
+Sain(
+    onComplete = { signatureBitmap ->
+        if (signatureBitmap != null) {
+            val pngBytes = signatureBitmap.toPngByteArray()
+            val base64 = signatureBitmap.toBase64()
+            // Store or transfer the bytes or the Base64 string as needed
+        }
+    },
+    ...
+)
 ```
 
-### iosMain
-
-```kotlin
-@OptIn(ExperimentalForeignApi::class)
-fun ImageBitmap.toUIImage(): UIImage? {
-    val width = this.width
-    val height = this.height
-    val buffer = IntArray(width * height)
-
-    this.readPixels(buffer)
-
-    val colorSpace = CGColorSpaceCreateDeviceRGB()
-    val context = CGBitmapContextCreate(
-        data = buffer.refTo(0),
-        width = width.toULong(),
-        height = height.toULong(),
-        bitsPerComponent = 8u,
-        bytesPerRow = (4 * width).toULong(),
-        space = colorSpace,
-        bitmapInfo = CGImageAlphaInfo.kCGImageAlphaPremultipliedLast.value
-    )
-
-    val cgImage = CGBitmapContextCreateImage(context)
-    return cgImage?.let { UIImage.imageWithCGImage(it) }
-}
-
-actual fun ImageBitmap.toBase64(): String {
-    val uiImage = this.toUIImage()
-    val jpegData = uiImage?.let { UIImageJPEGRepresentation(it, 0.5) }
-        ?: return ""
-    return jpegData.base64Encoding()
-}
-```
-
-### Usage
-
-```kotlin
-val base64String = imageBitmap.toBase64()
-// Store or transfer the base64String as needed
-```
+`toBase64()` returns only the Base64 payload. To display it in an HTML `img` tag or similar, prefix it with `data:image/png;base64,`.
