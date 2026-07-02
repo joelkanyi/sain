@@ -23,6 +23,13 @@
   "commitMessageExtra": "from {{{currentValue}}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}",
   "packageRules": [
     {
+      "matchPackagePatterns": [
+        "org.jetbrains.compose"
+      ],
+      "allowedVersions": "<20",
+      "description": "Ignore bogus date-style versions like 23.10.16.1 that are not real Compose Multiplatform releases"
+    },
+    {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
       "matchPackagePatterns": [
