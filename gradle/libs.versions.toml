@@ -1,16 +1,16 @@
 [versions]
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 agp = "9.2.1"
-core-ktx = "1.18.0"
-compose-multipatform = "1.10.3"
+core-ktx = "1.19.0"
+compose-multipatform = "1.11.1"
 compose-activity = "1.13.0"
-spotless = "8.4.0"
+spotless = "8.8.0"
 kotlin-compatibility = "0.18.1"
 dokka = "2.2.0"
-gradleMavenPublish = "0.36.0"
-nmcp = "1.4.4"
+gradleMavenPublish = "0.37.0"
+nmcp = "1.6.1"
 
-android-compileSdk = "36"
+android-compileSdk = "37"
 android-minSdk = "23"
 
 [libraries]

@@ -141,11 +141,12 @@ class SignatureStateTest {
         val saved = saveState(original)!!
         val restored = SignatureState.Saver.restore(saved)!!
 
+        val originalLine = original.signatureLines.first()
         val restoredLine = restored.signatureLines.first()
-        assertEquals(1.5f, restoredLine.start.x)
-        assertEquals(2.7f, restoredLine.start.y)
-        assertEquals(100.123f, restoredLine.end.x)
-        assertEquals(200.456f, restoredLine.end.y)
+        assertEquals(originalLine.start.x, restoredLine.start.x)
+        assertEquals(originalLine.start.y, restoredLine.start.y)
+        assertEquals(originalLine.end.x, restoredLine.end.x)
+        assertEquals(originalLine.end.y, restoredLine.end.y)
     }
 
     @Test

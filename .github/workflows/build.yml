@@ -127,5 +127,4 @@ jobs:
           ./gradlew
           :sain:compileKotlinIosArm64
           :sain:compileKotlinIosSimulatorArm64
-          :sain:compileKotlinIosX64
           --stacktrace
