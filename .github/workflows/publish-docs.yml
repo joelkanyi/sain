@@ -11,6 +11,11 @@ permissions:
   pages: write
   id-token: write
 
+# Pages allows only one deployment at a time; queue instead of racing
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy_docs:
     runs-on: macos-latest
