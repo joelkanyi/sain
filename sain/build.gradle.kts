@@ -29,7 +29,7 @@ kotlin {
 
     explicitApi() // https://kotlinlang.org/docs/whatsnew14.html#explicit-api-mode-for-library-authors
 
-    androidLibrary {
+    android {
         namespace = "com.joelkanyi.sain"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
@@ -46,7 +46,6 @@ kotlin {
         browser()
     }
 
-    iosX64()
     iosArm64()
     iosSimulatorArm64()
 
