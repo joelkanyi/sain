@@ -7,6 +7,7 @@ A Compose Multiplatform library for capturing and exporting signatures as `Image
 ## Features
 
 - Capture signatures as `ImageBitmap` on all platforms
+- Export signatures as PNG bytes or a Base64 string with `toPngByteArray()` and `toBase64()`
 - Customizable signature color, thickness, pad color, shape, and border
 - Optional guideline with configurable style, padding, and dash pattern
 - Hint text when the signature pad is empty

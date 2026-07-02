@@ -56,6 +56,16 @@ kotlin {
             implementation(libs.compose.foundation)
         }
 
+        // All non-Android targets render through Skiko, so they share one
+        // implementation of the ImageBitmap encoding helpers.
+        val skikoMain by creating {
+            dependsOn(commonMain.get())
+        }
+        jvmMain.get().dependsOn(skikoMain)
+        iosMain.get().dependsOn(skikoMain)
+        jsMain.get().dependsOn(skikoMain)
+        wasmJsMain.get().dependsOn(skikoMain)
+
         commonTest.dependencies {
             implementation(kotlin("test"))
             @Suppress("DEPRECATION_ERROR")
