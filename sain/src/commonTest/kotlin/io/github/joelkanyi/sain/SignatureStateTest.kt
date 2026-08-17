@@ -19,6 +19,7 @@ import androidx.compose.runtime.saveable.SaverScope
 import androidx.compose.ui.geometry.Offset
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -147,6 +148,20 @@ class SignatureStateTest {
         assertEquals(originalLine.start.y, restoredLine.start.y)
         assertEquals(originalLine.end.x, restoredLine.end.x)
         assertEquals(originalLine.end.y, restoredLine.end.y)
+    }
+
+    @Test
+    fun saverToleratesMalformedInput() {
+        val restored = SignatureState.Saver.restore(listOf("not", "floats"))
+        assertNotNull(restored)
+        assertTrue(restored.signatureLines.isEmpty())
+    }
+
+    @Test
+    fun saverSkipsRowsWithMissingCoordinates() {
+        val restored = SignatureState.Saver.restore(listOf(listOf(1f, 2f)))
+        assertNotNull(restored)
+        assertTrue(restored.signatureLines.isEmpty())
     }
 
     @Test
