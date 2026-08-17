@@ -10,7 +10,7 @@ dokka = "2.2.0"
 gradleMavenPublish = "0.37.0"
 nmcp = "1.6.1"
 
-android-compileSdk = "37"
+android-compileSdk = "36"
 android-minSdk = "23"
 
 [libraries]
