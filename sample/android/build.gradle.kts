@@ -86,7 +86,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
     implementation(libs.compose.activity)
     implementation(project(":sample:shared"))
 }
