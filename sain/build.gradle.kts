@@ -51,9 +51,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.compose.runtime)
-            implementation(libs.compose.ui)
-            implementation(libs.compose.foundation)
+            // These are declared api, not implementation, because their types
+            // (Composer, Saver, Modifier, ImageBitmap, BorderStroke,
+            // CornerBasedShape, TextStyle) appear in Sain's public API.
+            api(libs.compose.runtime)
+            api(libs.compose.ui)
+            api(libs.compose.foundation)
         }
 
         // All non-Android targets render through Skiko, so they share one
