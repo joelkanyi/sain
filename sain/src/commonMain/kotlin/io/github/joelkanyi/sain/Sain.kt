@@ -125,7 +125,7 @@ public fun Sain(
                     border = signatureBorderStroke,
                     shape = signaturePadShape,
                 )
-                .pointerInput(true) {
+                .pointerInput(state) {
                     detectDragGestures { change, dragAmount ->
                         change.consume()
                         val signatureLine = SignatureLine(
@@ -257,7 +257,7 @@ public fun Sain(
     Column {
         Box(
             modifier = modifier
-                .pointerInput(true) {
+                .pointerInput(state) {
                     detectDragGestures { change, dragAmount ->
                         change.consume()
 
@@ -357,17 +357,18 @@ public class SignatureState {
                 }
             },
             restore = { saved ->
-                @Suppress("UNCHECKED_CAST")
-                val points = saved as List<List<Float>>
+                val rows = saved as? List<*> ?: emptyList<Any?>()
                 SignatureState().apply {
-                    _signatureLines.addAll(
-                        points.map {
+                    for (row in rows) {
+                        val coords = (row as? List<*>)?.filterIsInstance<Float>() ?: continue
+                        if (coords.size < 4) continue
+                        _signatureLines.add(
                             SignatureLine(
-                                start = Offset(it[0], it[1]),
-                                end = Offset(it[2], it[3]),
-                            )
-                        },
-                    )
+                                start = Offset(coords[0], coords[1]),
+                                end = Offset(coords[2], coords[3]),
+                            ),
+                        )
+                    }
                 }
             },
         )
