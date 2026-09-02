@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.4.0"
-agp = "9.2.1"
+agp = "9.4.0"
 compose-multipatform = "1.11.1"
 compose-activity = "1.13.0"
 spotless = "8.8.0"
